@@ -19,7 +19,7 @@
             <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
 
             </div>
-            <div class="col bg-white p-5 rounded-end">
+            <div class="col bg-white p-5 rounded-end usuario">
                 <div class="text-end">
                     <img src="./IMAGES/sima logo.jpeg" width="50"alt="">
                 </div>

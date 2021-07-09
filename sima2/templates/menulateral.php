@@ -19,7 +19,8 @@
     <script src="../../JS/listar.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid principal">
+
         <div class="row">
             <div class="col-">
                 <div class="menu-expanded" id="menu" >

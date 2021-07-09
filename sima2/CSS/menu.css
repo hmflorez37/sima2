@@ -7,27 +7,36 @@
 }
 body{
 
-    background: linear-gradient(#ffffff);
+   
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     padding: 0;
     margin: 0;
     margin-left: var(--width);
+    
 }
+
+.principal{
+    
+    
+
+}
+
 
 #menu-navigation{
     color: white;
 }
 #menu{
-    background-color:var(--bg-color);
-    color: white;
+    background-image: url(../IMAGES/fondo.jpg);
+    background-repeat: no-repeat;
+    color: black;
     position: fixed;
     height: 100%;
     left: 0;
     top: 0;    
 }
 #menu a{
-    color: white;
+    color: black;
     text-decoration: none;  
 }
 
@@ -114,8 +123,8 @@ body{
 
 /*superior*/
 .sup{
-    background: linear-gradient(to right,#321d7a,#ffffff);
-    box-shadow:0 1px 1px #000011;
+    background-image: url(../IMAGES/fondo.jpg);
+    box-shadow:0 1px 1px #df5e08;
     margin-bottom: 20px;
 }
 .table{

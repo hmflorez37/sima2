@@ -49,7 +49,7 @@
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" value="btnmodificar"type="submit"name="accion">modificar</button>
+        <button class="btn btn-warning" value="btnmodificar"type="submit"name="accion">modificar</button>
     </div>
     </div>
 </div>

@@ -11,10 +11,14 @@
     <title>S.I.M.A</title>
 </head>
 <body>
+<div class="row">
+		<h1>Ventas</h1>
+		<div class="col-1">
+			<a class="btn btn-secondary" href="./ventas.php">Nueva </a>
+		</div>
 
 
-
-    <div class="row">
+    <div class="row" id="ventas">
     <?php
 include_once "../../modelos/databasepdo.php";
 $sentencia = $pdo->query("SELECT ventas.total, ventas.fecha, ventas.id,ventas.cliente, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', productos_vendidos.cantidad SEPARATOR '__') AS producto FROM ventas INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN producto ON producto.id_item = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id");
@@ -22,19 +26,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 	<div class="col-xs-12">
-	<div class="row">
-		<h1>Ventas</h1>
-		<div class="col-1">
-			<a class="btn btn-success" href="./ventas.php">Nueva </a>
-		</div>
-    
-        <div class="col-9">
-        <form class="d-flex" method="post" action="">
-        <input class="form-control me-2" type="text" placeholder="Search"name="buscar" id="buscar">
-        </form>
-        </div> 
-    </div>
-	<br>
+
 		<table class="table table-bordered">
 			<thead>
 				<tr>

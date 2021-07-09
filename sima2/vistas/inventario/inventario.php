@@ -17,7 +17,7 @@
         <div class="col-3">
             <form method="POST" action="../../controlador/crudproducto.php" ectype="multipart/form-data">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
             producto
             </button>
 
@@ -39,8 +39,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-success" value="btnagregar"type="submit"name="accion">Guardar</button>
-                            <button class="btn btn-warning" value="btnmodificar"type="submit"name="accion">modificar</button>
+                            <button class="btn btn-warning" value="btnagregar"type="submit"name="accion">Guardar</button>
+                            <button class="btn btn-danger" value="btnmodificar"type="submit"name="accion">modificar</button>
                             <button class="btn btn-info"value="limpiar" name="limpiar" type="reset">limpiar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>

@@ -1,7 +1,6 @@
 
 body{
-        background: #aaaaaa;
-        background: linear-gradient(to right,#000,#aaa);
+        background-image: url("../IMAGES/fondo\ 2.jpg");
     }
 .bg{
         background-image: url(../IMAGES/sima\ logo\ -\ copia.jpeg);
@@ -12,3 +11,6 @@ body{
         align-items: center;
         justify-content: center;
     }
+.usuario{
+    background-image: url("../IMAGES/fondo.jpg");
+}

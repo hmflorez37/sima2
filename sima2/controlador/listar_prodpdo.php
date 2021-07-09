@@ -63,7 +63,6 @@ if(!$consulta){
         <?php
     
             }
-            //invocar funcion
             listado()
             ?>
 

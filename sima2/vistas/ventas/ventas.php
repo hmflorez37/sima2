@@ -90,7 +90,7 @@
             <input class="form-control"type="num" name=cant value="1">
         </div>
         <div class="col-12">
-            <input class="form-control btn btn-primary"type="submit" value="agregar"name="agregar">
+            <input class="form-control btn btn-info"type="submit" value="agregar"name="agregar">
         </div>
 <!--fin agregar productos-->
     </form>
@@ -153,7 +153,7 @@
 
             <h3>Total: <?php echo $granTotal; ?></h3>
 			<input name="total" type="hidden" value="<?php echo $granTotal;?>">
-			<button type="submit" class="btn btn-success">Terminar venta</button>
+			<button type="submit" class="btn btn-warning">Terminar venta</button>
 			<a href="../../controlador/cancelarVenta.php" class="btn btn-danger">Cancelar venta</a>
 		</form>
 </div>
