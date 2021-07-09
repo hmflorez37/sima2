@@ -164,9 +164,4 @@
 </div>
 <!--fin de contenido-->
 </div>
-<!--scrript de clientes y mantenimientos--> 
-
-    <script type="text/javascript">
-
-</script>
 </body>
