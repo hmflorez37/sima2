@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2021 a las 04:16:39
+-- Tiempo de generación: 13-07-2021 a las 20:47:56
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -186,20 +186,19 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `fecha_vencimiento`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', '2025-05-12', 17),
-(2, 'farola derecha', 'renault', '2024-02-12', 10),
+(1, 'neumatico', 'universal', '2025-05-12', 20),
+(2, 'farola derecha', 'renault', '2024-02-12', 11),
 (3, 'casco', 'shaft', '0000-00-00', 20),
-(4, 'filtro', 'jax', '2021-06-29', 1),
+(4, 'filtro', 'jax', '2021-06-29', 20),
 (5, 'manguera', 'akt', '2021-06-10', 14),
 (6, 'casco', 'jax', '2021-06-23', 10),
 (7, 'manguera', 'tvs', '2021-06-24', 4),
 (8, 'carenaje', 'honda cb125', '2025-06-28', 7),
 (9, 'tornillo', 'universal', '2021-06-30', 99),
-(12, 'manguera', 'akt', '2024-11-12', 10),
+(10, 'agua', 'universal', '0000-00-00', 15),
+(11, 'casco', '1', '0000-00-00', 15),
+(19, 'agua', 'universal', '0000-00-00', 4),
 (22, 'piñon', '2', '2021-05-31', 0),
-(50, 'aa', 'aa', '2021-07-20', 15),
-(51, 'aa', 'aa', '0000-00-00', 15),
-(52, 'HEMERSON', 'akt', '0000-00-00', 1),
 (2358, 'bujia', 'tvs', '2025-02-12', 15),
 (9876, 'amortiguador de maletero', 'peugeot', '2023-10-12', 0),
 (45678, 'disco defrenos', 'q4', '2023-09-22', 0),

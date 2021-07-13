@@ -6,9 +6,7 @@
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
-    include("../../controlador/listar_clientes.php");
-    include("../../controlador/lisproven.php");
-
+    
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +64,7 @@
 <div class="container-fuid">
     <div class="row">
     <div class="col-9">
-    <form method="post" action="../../controlador/ventastablatemp.php">
+    <form method="post" action="../inventario/gestor.php">
 			<label for="codigo">Código de producto: </label>
             
             <input class="form-control"type="hidden" name="unidad" value="1">
@@ -119,7 +117,7 @@
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><a class="btn btn-danger" href="<?php echo "../../controlador/eliminarprod.php?indice=" . $indice?>"></a></td>
+            <td><a class="btn btn-danger" href="<?php echo "../inventario/gestor.php?indice=" . $indice?>"></a></td>
 
                 </tr>
                 

@@ -19,10 +19,10 @@
 <body>
 <div class="container">
 
-<form method="POST" action="../../controlador/crudproducto.php" ectype="multipart/form-data">
+<form method="POST" action="../inventario/gestor.php?">
 <!-- Button trigger modal -->
 
-<!-- Modal -->
+<!-- formulario -->
 <div id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -49,7 +49,7 @@
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" value="btnmodificar"type="submit"name="accion">modificar</button>
+        <button class="btn btn-warning" value="editar"type="submit"name="accion">modificar</button>
     </div>
     </div>
 </div>

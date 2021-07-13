@@ -1,9 +1,10 @@
 $(busqueda());
+
     
     function busqueda(buscar){
         $.ajax({
             type: 'POST',
-            url: '../../controlador/listar_prodpdo.php',
+            url: '../../controlador/listaajax.php',
             data: {'buscar': buscar},
             
         })

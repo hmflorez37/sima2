@@ -1,6 +1,11 @@
 <?php
     include("../../templates/menusup.php");
     include("../../templates/menulateral.php");
+	include("../../modelos/databasepdo.php");
+	$pdo = new base();
+	$pdo=$pdo->construct();
+
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +25,6 @@
 
     <div class="row" id="ventas">
     <?php
-include_once "../../modelos/databasepdo.php";
 $sentencia = $pdo->query("SELECT ventas.total, ventas.fecha, ventas.id,ventas.cliente, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', productos_vendidos.cantidad SEPARATOR '__') AS producto FROM ventas INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN producto ON producto.id_item = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id");
 $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 ?>
