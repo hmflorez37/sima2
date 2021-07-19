@@ -2,7 +2,13 @@
 class controlventa{
     public function listarCliente(){}
     public function listarProdVenta(){
+        require_once("../../modelos/ventaGestion.php");
+        $select = new gestionventas();
+        $producto =$select->listarProducto();
+        
+
     }
+
     public function ventatemp($producto,$cant){
         $producto= new producto($producto,'','','',$cant,);
 
@@ -17,16 +23,3 @@ class controlventa{
 
     }
 }
-    /*
-    
-    public function cancelarVenta(){
-        session_start();
-
-unset($_SESSION["venta"]);
-$_SESSION["venta"] = [];
-
-header("Location: ../vistas/ventas/ventas.php?status=2");
-    }
-    public function terminarVenta(){}
-
-}*/

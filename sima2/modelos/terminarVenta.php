@@ -3,13 +3,14 @@
 
 session_start();
 
+
 $clientev=(isset($_POST['clientev']))?$_POST['clientev']:"";
 echo($clientev);
-$mantov=(isset($_POST['mantov']))?$_POST['mantov']:"";
-echo($mantov);
 $total=(isset($_POST['total']))?$_POST['total']:"";
 echo($total);
 include_once "../modelos/databasepdo.php";
+$pdo=new base();
+        $pdo=$pdo->construct();
 
 
 $ahora = date("Y-m-d H:i:s");
@@ -36,4 +37,7 @@ unset($_SESSION["venta"]);
 $_SESSION["venta"] = [];
 
 header("Location: ../vistas/ventas/verVentas.php?status=1");
+
+
+
 

@@ -16,9 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I.M.A</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <link href="../../CSS/select2.min.css" rel="stylesheet"/>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="../../JS/select2.min.js"></script>
 <script src="../../JS/select.js"></script>
 
 
@@ -78,12 +78,12 @@
         <div class="col-12">
             <select name="prod"class="form-select " id="productov" aria-label="Default select">
                 <option>busca producto</option>
+            <?php    foreach ($prodVenta as $mostrar ) {?>
+            <option name="product_select" value="<?php echo $mostrar ['id_item']?>"><?php echo $mostrar ['id_item']?><?php echo (" -- ")?><?php echo $mostrar ['nombre_prod']?><?php echo (" marca ")?><?php echo $mostrar ['id_marcas']?></option>
 
-                <?php
-                foreach ($prodVenta as $mostrar ) {?>
-                <option name="product_select" value="<?php echo $mostrar ['id_item']?>"><?php echo $mostrar ['id_item']?><?php echo (" -- ")?><?php echo $mostrar ['nombre_prod']?><?php echo (" marca ")?><?php echo $mostrar ['id_marcas']?></option>
-
-                <?php } ?>
+        <?php
+        }
+        ?>
             </select>
             <input class="form-control"type="num" name=cant value="1">
         </div>
@@ -134,12 +134,14 @@
             
         <div class="">
         
-        <form action="../../controlador/terminarVenta.php" method="post">
+        <form action="../../modelos/terminarVenta.php" method="post">
         <div class="col-12">
             
             <div class="col-12" id="clienteventa">
         <select name="clientev"class="form-select "id="clientev" aria-label="Default select"onchange="ShowSelected();">
                         <option selected>seleccionar cliente</option>
+                        <option selected>1234789</option>
+                    
 
                         <?php foreach ($listaclientes as $mostrar ) {?>
                         <option name="cliente" value="<?php echo $mostrar ['id_cliente']?>"><?php echo $mostrar ['nombre']?><?php echo ("  ")?><?php echo $mostrar ['apellido']?><?php echo (" cedula ")?><?php echo $mostrar ['id_cliente']?></option>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2021 a las 20:47:56
+-- Tiempo de generación: 19-07-2021 a las 20:55:54
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -73,15 +73,15 @@ CREATE TABLE `cliente` (
   `apellido` varchar(50) NOT NULL,
   `telefono` bigint(14) NOT NULL,
   `direccion` varchar(20) NOT NULL,
-  `e-mail` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `telefono`, `direccion`, `e-mail`) VALUES
-(342344, 'luis samuel', 'romero', 32134535, 'cra 27 87 39', 'rolues2345@outlook.es'),
+INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `telefono`, `direccion`, `email`) VALUES
+(342344, 'luis samuel', 'cardenas', 321444444, 'cra 27 87 38', 'rolues2345@outlook.es'),
 (354234, 'marinela', 'gonzales', 31039454, 'cll 24 35 87', 'marigo12@outlook.com'),
 (1234789, 'johana', 'arbelaez', 3245324, 'cll 34 n 12 45', 'joarb34@yahoo.es'),
 (1461817, 'diego', 'quintero', 9655616, 'crajsd', 'diego@jj.com'),
@@ -186,11 +186,11 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `fecha_vencimiento`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', '2025-05-12', 20),
-(2, 'farola derecha', 'renault', '2024-02-12', 11),
+(1, 'neumatico', 'universal', '2025-05-12', 16),
+(2, 'farola derecha', 'renault', '2024-02-12', 9),
 (3, 'casco', 'shaft', '0000-00-00', 20),
 (4, 'filtro', 'jax', '2021-06-29', 20),
-(5, 'manguera', 'akt', '2021-06-10', 14),
+(5, 'manguera', 'akt', '2021-06-10', 13),
 (6, 'casco', 'jax', '2021-06-23', 10),
 (7, 'manguera', 'tvs', '2021-06-24', 4),
 (8, 'carenaje', 'honda cb125', '2025-06-28', 7),
@@ -199,6 +199,7 @@ INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `fecha_vencimient
 (11, 'casco', '1', '0000-00-00', 15),
 (19, 'agua', 'universal', '0000-00-00', 4),
 (22, 'piñon', '2', '2021-05-31', 0),
+(55, 'guaya', 'universal', '0000-00-00', 14),
 (2358, 'bujia', 'tvs', '2025-02-12', 15),
 (9876, 'amortiguador de maletero', 'peugeot', '2023-10-12', 0),
 (45678, 'disco defrenos', 'q4', '2023-09-22', 0),
@@ -246,7 +247,15 @@ INSERT INTO `productos_vendidos` (`id`, `id_producto`, `id_venta`, `cantidad`) V
 (6, 5, 3, 1),
 (7, 9, 3, 1),
 (8, 1, 4, 1),
-(9, 2, 5, 1);
+(9, 2, 5, 1),
+(10, 1, 7, 1),
+(11, 55, 7, 1),
+(12, 5, 8, 1),
+(13, 1, 12, 1),
+(14, 1, 12, 1),
+(15, 1, 13, 1),
+(16, 2, 13, 1),
+(17, 2, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -312,7 +321,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_emp`, `nom_user`, `pass_user`, `id_users`) VALUES
-(1003842, 'almacenadmin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1);
+(234234, 'admin', 'admin', 4);
 
 -- --------------------------------------------------------
 
@@ -335,7 +344,11 @@ INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `total`) VALUES
 (1, '2021-07-06 01:29:32', 1234789, 2),
 (3, '2021-07-06 19:24:10', 354234, 3),
 (4, '2021-07-06 20:05:31', 342344, 1),
-(5, '2021-07-06 20:05:46', 342344, 1);
+(5, '2021-07-06 20:05:46', 342344, 1),
+(7, '2021-07-17 14:27:57', 1234789, 2),
+(8, '2021-07-17 14:35:51', 1234789, 1),
+(12, '2021-07-17 14:48:44', 1234789, 2),
+(13, '2021-07-18 17:33:00', 1234789, 3);
 
 --
 -- Índices para tablas volcadas
@@ -432,19 +445,19 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_users` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_users` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas

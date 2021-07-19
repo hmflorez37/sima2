@@ -26,7 +26,7 @@
                 <h2 class="fw-bold text-center pt-5 py-5">Bienvenido a <br>S.I.M.A</h2>
 
                 <!--login-->
-                <form action="../sima2/vistas/inicio/inicio.php">
+                <form action="controlador/sesion.php" method="post">
                     <div class="mb-4">
                         <label for="user-name" class="
                         form-label">nombre de usuario</label>

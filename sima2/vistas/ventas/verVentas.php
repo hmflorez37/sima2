@@ -4,7 +4,6 @@
 	include("../../modelos/databasepdo.php");
 	$pdo = new base();
 	$pdo=$pdo->construct();
-
 	
 ?>
 <!DOCTYPE html>
@@ -17,6 +16,13 @@
 </head>
 <body>
 <div class="row">
+<?php if(isset($_GET["status"])){
+		if($_GET["status"] === "1"){
+			?>
+			<script type="text/javascript">alertify.success('Venta registrada!');</script>
+
+	<?php	}} ?>
+	
 		<h1>Ventas</h1>
 		<div class="col-1">
 			<a class="btn btn-secondary" href="./ventas.php">Nueva </a>
