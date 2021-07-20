@@ -1,15 +1,18 @@
 <?php
 
 class sesion{
-
-
-    public function iniciar($userna,$pass){
+    public function __construct(){
         require_once ("databasepdo.php");
         $pdo=new base();
         $pdo=$pdo->construct();
+    }
+
+
+    public function iniciar($userna,$pass){
+        
         $username = $userna;
         $password = $pass;
-        $sentencia = $pdo->prepare("SELECT * FROM usuarios ");
+        $sentencia = $this->pdo->prepare("SELECT * FROM usuarios ");
         $sentencia->execute();
         $result=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $datos){

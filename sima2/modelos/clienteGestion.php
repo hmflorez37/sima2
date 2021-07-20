@@ -44,9 +44,6 @@ class gestionCliente{
 
     }
     public function editarCliente(cliente $cliente){
-        require_once ("databasepdo.php");
-        $pdo=new base();
-        $pdo=$pdo->construct();
         $id_cliente = $cliente->obtenerId();
         $nombre = $cliente->obtenerNombre();
         $apellido = $cliente->obtenerApellido();
@@ -54,7 +51,7 @@ class gestionCliente{
         $direccion = $cliente->obtenerDireccion();
         $email = $cliente->obtenerEmail();
 
-        $sentencia=$pdo->prepare("UPDATE `cliente` SET `nombre`='$nombre',`apellido`='$apellido',`telefono`='$telefono',`direccion`='$direccion' WHERE `id_cliente`='$id_cliente'");
+        $sentencia=$this->pdo->prepare("UPDATE `cliente` SET `nombre`='$nombre',`apellido`='$apellido',`telefono`='$telefono',`direccion`='$direccion' WHERE `id_cliente`='$id_cliente'");
             $sentencia->execute();
     }
 }

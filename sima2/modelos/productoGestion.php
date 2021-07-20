@@ -42,16 +42,14 @@ class gestorProducto {
 
     }
     public function editarprod(producto $producto){
-        require_once ("databasepdo.php");
-        $pdo=new base();
-        $pdo=$pdo->construct();
+        
         $id_item = $producto->obtenerId();
         $nombre_prod = $producto->obtenerNombre();
         $id_marcas = $producto->obtenerMarca();
         $fecha_vencimiento = $producto->obtenerFecha();
         $cantidad_prod = $producto->obtenerCant();
 
-        $sentencia=$pdo->prepare("UPDATE `producto` SET `id_item`='$id_item',`nombre_prod`='$nombre_prod',`id_marcas`='$id_marcas',`fecha_vencimiento`='$fecha_vencimiento',`cantidad_prod`='$cantidad_prod' WHERE `id_item`='$id_item'");
+        $sentencia=$this->pdo->prepare("UPDATE `producto` SET `id_item`='$id_item',`nombre_prod`='$nombre_prod',`id_marcas`='$id_marcas',`fecha_vencimiento`='$fecha_vencimiento',`cantidad_prod`='$cantidad_prod' WHERE `id_item`='$id_item'");
             $sentencia->execute();
     }
 }
