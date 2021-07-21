@@ -20,9 +20,11 @@ class gestionVentas{
 
     }
     public function prodventa(producto $producto){
+        $pdo=new base();
+        $pdo=$pdo->construct();
         $id_item = $producto->obtenerId();
         $cant = $producto->obtenerCant();
-        $sentencia = $this->pdo->prepare("SELECT * FROM `producto` WHERE id_item = $id_item ");
+        $sentencia = $pdo->prepare("SELECT * FROM `producto` WHERE id_item = $id_item ");
         $sentencia->execute();
         $prodlistado = $sentencia->fetch(PDO::FETCH_OBJ);
         if ($prodlistado->cantidad_prod < 1) {
