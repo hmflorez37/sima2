@@ -9,21 +9,11 @@ class gestionVentas{
         $pdo=$pdo->construct();
     }
 
-    public function listarProducto(){
-        require_once ("databasepdo.php");
+    public function prodventa($producto,$cant){
         $pdo=new base();
         $pdo=$pdo->construct();
-        $sentencia=$this->$pdo->prepare("SELECT * FROM producto");
-    $sentencia->execute();
-    $prodVenta=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-    return $prodVenta;
-
-    }
-    public function prodventa(producto $producto){
-        $pdo=new base();
-        $pdo=$pdo->construct();
-        $id_item = $producto->obtenerId();
-        $cant = $producto->obtenerCant();
+        $id_item = $producto;
+        $cant = $cant;
         $sentencia = $pdo->prepare("SELECT * FROM `producto` WHERE id_item = $id_item ");
         $sentencia->execute();
         $prodlistado = $sentencia->fetch(PDO::FETCH_OBJ);

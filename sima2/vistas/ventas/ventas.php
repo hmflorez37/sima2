@@ -20,6 +20,8 @@
 
 <script src="../../JS/select2.min.js"></script>
 <script src="../../JS/select.js"></script>
+<script src="../../JS/selectcliven.js"></script>
+<script src="../../JS/selectprodventa.js"></script>
 
 
 
@@ -73,18 +75,14 @@
 		</form>
     </div>
     <div class="col-3">
-<form action="../../controlador/ventastablatemp.php" method=GET>
+<form action="../inventario/gestor.php" method=GET>
         
         <div class="col-12">
+            <h5>buscar producto</h5>
             <select name="prod"class="form-select " id="productov" aria-label="Default select">
-                <option>busca producto</option>
-            <?php    foreach ($prodVenta as $mostrar ) {?>
-            <option name="product_select" value="<?php echo $mostrar ['id_item']?>"><?php echo $mostrar ['id_item']?><?php echo (" -- ")?><?php echo $mostrar ['nombre_prod']?><?php echo (" marca ")?><?php echo $mostrar ['id_marcas']?></option>
-
-        <?php
-        }
-        ?>
+                <option></option>
             </select>
+            <h5>cantidad de unidades</h5>
             <input class="form-control"type="num" name=cant value="1">
         </div>
         <div class="col-12">
@@ -138,15 +136,10 @@
         <div class="col-12">
             
             <div class="col-12" id="clienteventa">
-        <select name="clientev"class="form-select "id="clientev" aria-label="Default select"onchange="ShowSelected();">
-                        <option selected>seleccionar cliente</option>
-                        <option selected>1234789</option>
-                    
+               <h5> seleccionar cliente</h5>
+        <select name="clientev"class="form-select "id="clientev" aria-label="Default select">
+                        <option></option>
 
-                        <?php foreach ($listaclientes as $mostrar ) {?>
-                        <option name="cliente" value="<?php echo $mostrar ['id_cliente']?>"><?php echo $mostrar ['nombre']?><?php echo ("  ")?><?php echo $mostrar ['apellido']?><?php echo (" cedula ")?><?php echo $mostrar ['id_cliente']?></option>
-
-                        <?php } ?>
                     </select>
             </div>
         </div>

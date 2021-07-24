@@ -1,10 +1,11 @@
 <?php
 
 class sesion{
+    private $pdo;
     public function __construct(){
         require_once ("databasepdo.php");
         $pdo=new base();
-        $pdo=$pdo->construct();
+        $this->pdo=$pdo->construct();
     }
 
 
