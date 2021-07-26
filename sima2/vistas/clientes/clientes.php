@@ -85,7 +85,8 @@
             </div>
         </div>
     </div>
-</div><div class="col-9">
+</div>
+<div class="col-9">
         <form class="d-flex" method="post" action="">
         <input class="form-control me-2" type="text" placeholder="Search"name="buscarc" id="buscarc">
         </form>
