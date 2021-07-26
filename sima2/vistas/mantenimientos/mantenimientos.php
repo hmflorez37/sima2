@@ -1,5 +1,5 @@
 <?php
-    include("../../modelos/database.php");
+    include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
 ?>
