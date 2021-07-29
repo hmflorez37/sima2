@@ -5,7 +5,7 @@
     $id=(isset($_POST['id']))?$_POST['id'] :"";
     $nombre=(isset($_POST['nombre']))?$_POST['nombre'] :"";
     $marca=(isset($_POST['marca']))?$_POST['marca'] :"";
-    $fechaven=(isset($_POST['fechaven']))?$_POST['fechaven'] :"";
+    $costo=(isset($_POST['costo']))?$_POST['costo'] :"";
     $cantidad=(isset($_POST['cantidad']))?$_POST['cantidad'] :"";
 ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
         
         <input class="form-control" type="text" name="marca" value="<?php echo $marca?>" placeholder="marca" id="marca" required><br>
         
-        <input class="form-control" type="date" name="fechaven" value="<?php echo $fechaven?>" placeholder="fecha-ven" id="fechaven"><br>
+        <input class="form-control" type="text" name="costo" value="<?php echo $costo?>" placeholder="costo producto" id="costo"><br>
         
         <input class="form-control" type="num" name="cantidad" value="<?php echo $cantidad?>" placeholder="cantidad" id="cantidad" required><br>
 

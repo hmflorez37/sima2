@@ -16,9 +16,9 @@ class controlInfoProd{
 
 
 
-        public function guardarprod($id,$nombre,$marca,$fechaven,$cantidad){
+        public function guardarprod($id,$nombre,$marca,$costo,$cantidad){
 
-                $producto = new producto($id,$nombre,$marca,$fechaven,$cantidad);
+                $producto = new producto($id,$nombre,$marca,$costo,$cantidad);
                 $gestorProducto = new gestorProducto();
                 $consulta = $gestorProducto->guardarprod($producto);
                 $result = $gestorProducto->listado($consulta);
@@ -26,9 +26,9 @@ class controlInfoProd{
 
 
         }
-        public function editarprod($id,$nombre,$marca,$fechaven,$cantidad){
+        public function editarprod($id,$nombre,$marca,$costo,$cantidad){
 
-                $producto = new producto($id,$nombre,$marca,$fechaven,$cantidad);
+                $producto = new producto($id,$nombre,$marca,$costo,$cantidad);
                 $gestorProducto = new gestorProducto();
                 $consulta = $gestorProducto->editarprod($producto);
                 $result = $gestorProducto->listado($consulta);

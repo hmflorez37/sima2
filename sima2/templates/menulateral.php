@@ -70,17 +70,10 @@
                                     <div class="icon">
                                         <i class = "zmdi zmdi-store"> </i>
                                     </div>
-                                    <div class="title">INVENTARIO</div>
+                                    <div class="title">PRODUCTO</div>
                                 </a>
                         </div>
-                            <div class="navigation">
-                                <a href="../mantenimientos/mantenimientos.php">
-                                    <div class="icon">
-                                        <i class = "zmdi zmdi-wrench"> </i>
-                                    </div>
-                                    <div class="title">MANTENIMIENTOS</div>
-                                </a>
-                            </div>
+                            
                             <div class="navigation">
                                 <a href="../proveedores/proveedores.php">
                                     <div class="icon">

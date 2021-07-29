@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2021 a las 20:55:54
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.3.27
+-- Tiempo de generación: 29-07-2021 a las 05:11:37
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,46 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sima`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `almacen`
---
-
-CREATE TABLE `almacen` (
-  `nombre_prod` varchar(50) NOT NULL,
-  `cantidad_prod` int(50) NOT NULL,
-  `id_almacen` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `almacen`
---
-
-INSERT INTO `almacen` (`nombre_prod`, `cantidad_prod`, `id_almacen`) VALUES
-('aceite 20w', 50, 1),
-('amortiguador', 5, 2),
-('amortiguador de maletero', 10, 3),
-('bateria', 5, 4),
-('bombillas', 50, 5),
-('bujia', 25, 6),
-('campana embriague', 3, 7),
-('carburador discover 125 150', 10, 8),
-('disco defrenos', 10, 9),
-('eje primario', 2, 10),
-('eje secundario con planos', 2, 11),
-('exploradora chevrolet sail 2014', 10, 12),
-('fusible', 100, 13),
-('guardabarros', 10, 14),
-('guaya clush', 50, 15),
-('kit clucht', 20, 16),
-('limpiaparabrisas', 42, 17),
-('palanca de arranque zanella', 10, 18),
-('pastillas traseras', 50, 19),
-('piñon', 50, 20),
-('retrovisor', 5, 21),
-('valvula de escape', 10, 22);
 
 -- --------------------------------------------------------
 
@@ -126,35 +86,12 @@ INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `manto`
---
-
-CREATE TABLE `manto` (
-  `id_manto` int(20) NOT NULL,
-  `id_cliente` int(20) NOT NULL,
-  `id_placa` varchar(20) NOT NULL,
-  `tipo_vehi` varchar(50) NOT NULL,
-  `id_empleado` int(14) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
-  `observ` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `manto`
---
-
-INSERT INTO `manto` (`id_manto`, `id_cliente`, `id_placa`, `tipo_vehi`, `id_empleado`, `fecha_ingreso`, `observ`) VALUES
-(0, 30876545, 'xyn47c', 'moto', 1029343, '2021-07-06', 'cambio de bujia y revision de aceite');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `pedidos`
 --
 
 CREATE TABLE `pedidos` (
   `id_pedido` int(50) NOT NULL,
-  `id_prod_ped` int(50) NOT NULL,
+  `fecha_pedido` date NOT NULL,
   `Marca_Prod_ped` varchar(50) NOT NULL,
   `id_prov_ped` int(50) NOT NULL,
   `Cant_Prod_ped` int(50) NOT NULL
@@ -164,8 +101,32 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id_pedido`, `id_prod_ped`, `Marca_Prod_ped`, `id_prov_ped`, `Cant_Prod_ped`) VALUES
-(1, 78986, 'chevrolet', 2345352, 24);
+INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `Marca_Prod_ped`, `id_prov_ped`, `Cant_Prod_ped`) VALUES
+(2, '2021-07-01', 'levis', 3213245, 21),
+(3, '2021-07-15', 'diesel', 2345352, 14);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedido_producto`
+--
+
+CREATE TABLE `pedido_producto` (
+  `id` bigint(20) NOT NULL,
+  `id_producto_pedido` int(20) NOT NULL,
+  `id_pedido` int(50) NOT NULL,
+  `cantidad` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedido_producto`
+--
+
+INSERT INTO `pedido_producto` (`id`, `id_producto_pedido`, `id_pedido`, `cantidad`) VALUES
+(1, 46750, 2, 10),
+(3, 10, 2, 7),
+(4, 543235, 3, 3),
+(5, 11, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -177,7 +138,7 @@ CREATE TABLE `producto` (
   `id_item` int(20) NOT NULL,
   `nombre_prod` varchar(50) NOT NULL,
   `id_marcas` varchar(20) NOT NULL,
-  `fecha_vencimiento` date NOT NULL,
+  `costo_producto` int(50) NOT NULL,
   `cantidad_prod` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -185,43 +146,44 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `fecha_vencimiento`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', '2025-05-12', 16),
-(2, 'farola derecha', 'renault', '2024-02-12', 9),
-(3, 'casco', 'shaft', '0000-00-00', 20),
-(4, 'filtro', 'jax', '2021-06-29', 20),
-(5, 'manguera', 'akt', '2021-06-10', 13),
-(6, 'casco', 'jax', '2021-06-23', 10),
-(7, 'manguera', 'tvs', '2021-06-24', 4),
-(8, 'carenaje', 'honda cb125', '2025-06-28', 7),
-(9, 'tornillo', 'universal', '2021-06-30', 99),
-(10, 'agua', 'universal', '0000-00-00', 15),
-(11, 'casco', '1', '0000-00-00', 15),
-(19, 'agua', 'universal', '0000-00-00', 4),
-(22, 'piñon', '2', '2021-05-31', 0),
-(55, 'guaya', 'universal', '0000-00-00', 14),
-(2358, 'bujia', 'tvs', '2025-02-12', 15),
-(9876, 'amortiguador de maletero', 'peugeot', '2023-10-12', 0),
-(45678, 'disco defrenos', 'q4', '2023-09-22', 0),
-(46750, 'exploradora chevrolet sail 2014', 'hizone', '2025-07-24', 0),
-(56435, 'fusible', 'generico', '2022-12-20', 0),
-(57493, 'eje primario', 'juki', '2029-06-07', 0),
-(58493, 'bateria', 'ytxl85', '2022-11-18', 0),
-(67554, 'retrovisor', 'jymop', '2031-07-22', 0),
-(76557, 'amortiguador', 'generico', '2021-06-30', 0),
-(78986, 'bombillas', 'ghi', '2024-08-21', 0),
-(86848, 'limpiaparabrisas', 'seat cordoba', '2029-05-22', 0),
-(89009, 'pastillas traseras', 'kia quoris', '2022-01-20', 0),
-(112234, 'aceite 20w', 'mobil super', '2022-04-21', 0),
-(127483, 'palanca de arranque zanella', 'motomel 200', '2025-05-22', 0),
-(543235, 'bujia', 'focus', '2024-02-15', 0),
-(584930, 'carburador discover 125 150', 'generico', '2023-03-16', 0),
-(594384, 'guaya clush', 'ktm', '2021-10-07', 0),
-(658439, 'guardabarros', 'generico', '2021-05-26', 0),
-(796043, 'kit clucht', 'phc', '2023-09-21', 0),
-(876785, 'campana embriague', 'juki', '2025-09-23', 0),
-(889403, 'eje secundario con planos', 'juki', '2026-10-01', 0),
-(964932, 'valvula de escape', 'erid', '2022-02-03', 0);
+INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `costo_producto`, `cantidad_prod`) VALUES
+(1, 'neumatico', 'universal', 20000, 16),
+(2, 'farola derecha', 'renault', 20240212, 9),
+(3, 'casco', 'shaft', 0, 20),
+(4, 'filtro', 'jax', 20210629, 20),
+(5, 'manguera', 'akt', 20210610, 13),
+(6, 'casco', 'jax', 20210623, 10),
+(7, 'manguera', 'tvs', 20210624, 4),
+(8, 'carenaje', 'honda cb125', 20250628, 7),
+(9, 'tornillo', 'universal', 20210630, 99),
+(10, 'agua', 'universal', 0, 15),
+(11, 'casco', '1', 0, 15),
+(19, 'agua', 'universal', 0, 4),
+(22, 'piñon', '2', 20210531, 0),
+(55, 'guaya', 'universal', 0, 14),
+(2358, 'bujia', 'tvs', 20250212, 15),
+(9874, 'Ruana', 'Boyaca Ruanas ', 60000, 2),
+(9876, 'amortiguador de maletero', 'peugeot', 20231012, 0),
+(45678, 'disco defrenos', 'q4', 20230922, 0),
+(46750, 'exploradora chevrolet sail 2014', 'hizone', 20250724, 0),
+(56435, 'fusible', 'generico', 20221220, 0),
+(57493, 'eje primario', 'juki', 20290607, 0),
+(58493, 'bateria', 'ytxl85', 20221118, 0),
+(67554, 'retrovisor', 'jymop', 20310722, 0),
+(76557, 'amortiguador', 'generico', 20210630, 0),
+(78986, 'bombillas', 'ghi', 20240821, 0),
+(86848, 'limpiaparabrisas', 'seat cordoba', 20290522, 0),
+(89009, 'pastillas traseras', 'kia quoris', 20220120, 0),
+(112234, 'aceite 20w', 'mobil super', 20220421, 0),
+(127483, 'palanca de arranque zanella', 'motomel 200', 20250522, 0),
+(543235, 'bujia', 'focus', 20240215, 0),
+(584930, 'carburador discover 125 150', 'generico', 20230316, 0),
+(594384, 'guaya clush', 'ktm', 20211007, 0),
+(658439, 'guardabarros', 'generico', 20210526, 0),
+(796043, 'kit clucht', 'phc', 20230921, 0),
+(876785, 'campana embriague', 'juki', 20250923, 0),
+(889403, 'eje secundario con planos', 'juki', 20261001, 0),
+(964932, 'valvula de escape', 'erid', 20220203, 0);
 
 -- --------------------------------------------------------
 
@@ -260,48 +222,25 @@ INSERT INTO `productos_vendidos` (`id`, `id_producto`, `id_venta`, `cantidad`) V
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prov`
+-- Estructura de tabla para la tabla `proveedor`
 --
 
-CREATE TABLE `prov` (
-  `id_item` int(20) NOT NULL,
+CREATE TABLE `proveedor` (
   `id_proveedor` int(20) NOT NULL,
   `nombre_contacto` varchar(50) NOT NULL,
   `ciudad` varchar(50) NOT NULL,
   `telefono_contacto` int(14) NOT NULL,
+  `email` text NOT NULL,
   `nombre_prov` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `prov`
+-- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `prov` (`id_item`, `id_proveedor`, `nombre_contacto`, `ciudad`, `telefono_contacto`, `nombre_prov`) VALUES
-(796043, 2345352, 'saul ramirez', 'bogota', 31254354, 'chevrolet'),
-(56435, 3213245, 'carlos santana', 'medellin', 3234532, 'fusimas');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `temp`
---
-
-CREATE TABLE `temp` (
-  `id_item` int(20) NOT NULL,
-  `nombre_prod` varchar(50) NOT NULL,
-  `id_marcas` varchar(20) NOT NULL,
-  `cantidad_prod` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `temp`
---
-
-INSERT INTO `temp` (`id_item`, `nombre_prod`, `id_marcas`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', 1),
-(2, 'farola derecha', 'renault', 1),
-(3, 'casco', 'shaft', 1),
-(4, 'filtro', 'jax', 1);
+INSERT INTO `proveedor` (`id_proveedor`, `nombre_contacto`, `ciudad`, `telefono_contacto`, `email`, `nombre_prov`) VALUES
+(2345352, 'saul ramirez', 'bogota', 31254354, '', 'chevrolet'),
+(3213245, 'carlos santana', 'medellin', 3234532, '', 'fusimas');
 
 -- --------------------------------------------------------
 
@@ -333,6 +272,8 @@ CREATE TABLE `ventas` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `fecha` datetime NOT NULL,
   `cliente` int(20) NOT NULL,
+  `vendedor` int(20) NOT NULL,
+  `costo_total` bigint(50) NOT NULL,
   `total` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -340,26 +281,12 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `total`) VALUES
-(1, '2021-07-06 01:29:32', 1234789, 2),
-(3, '2021-07-06 19:24:10', 354234, 3),
-(4, '2021-07-06 20:05:31', 342344, 1),
-(5, '2021-07-06 20:05:46', 342344, 1),
-(7, '2021-07-17 14:27:57', 1234789, 2),
-(8, '2021-07-17 14:35:51', 1234789, 1),
-(12, '2021-07-17 14:48:44', 1234789, 2),
-(13, '2021-07-18 17:33:00', 1234789, 3);
+INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `vendedor`, `costo_total`, `total`) VALUES
+(1, '2021-07-29 04:27:52', 1461817, 4, 0, 2);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `almacen`
---
-ALTER TABLE `almacen`
-  ADD PRIMARY KEY (`id_almacen`),
-  ADD KEY `nombre_prod` (`nombre_prod`);
 
 --
 -- Indices de la tabla `cliente`
@@ -374,20 +301,19 @@ ALTER TABLE `empleado`
   ADD PRIMARY KEY (`id_empleado`);
 
 --
--- Indices de la tabla `manto`
---
-ALTER TABLE `manto`
-  ADD PRIMARY KEY (`id_manto`),
-  ADD KEY `cliente` (`id_cliente`),
-  ADD KEY `id_empleado` (`id_empleado`);
-
---
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedido`),
-  ADD KEY `id_prod_ped` (`id_prod_ped`),
   ADD KEY `id_prov_ped` (`id_prov_ped`);
+
+--
+-- Indices de la tabla `pedido_producto`
+--
+ALTER TABLE `pedido_producto`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pedido` (`id_pedido`),
+  ADD KEY `id_producto_pedido` (`id_producto_pedido`);
 
 --
 -- Indices de la tabla `producto`
@@ -404,18 +330,10 @@ ALTER TABLE `productos_vendidos`
   ADD KEY `id_producto` (`id_producto`);
 
 --
--- Indices de la tabla `prov`
+-- Indices de la tabla `proveedor`
 --
-ALTER TABLE `prov`
-  ADD PRIMARY KEY (`id_proveedor`),
-  ADD KEY `item` (`id_item`);
-
---
--- Indices de la tabla `temp`
---
-ALTER TABLE `temp`
-  ADD PRIMARY KEY (`id_item`),
-  ADD KEY `nombre_prod` (`nombre_prod`);
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`id_proveedor`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -429,7 +347,8 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cliente` (`cliente`);
+  ADD KEY `cliente` (`cliente`),
+  ADD KEY `vendedor` (`vendedor`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -439,7 +358,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pedido` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido_producto`
+--
+ALTER TABLE `pedido_producto`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
@@ -457,31 +382,24 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `almacen`
---
-ALTER TABLE `almacen`
-  ADD CONSTRAINT `almacen_ibfk_1` FOREIGN KEY (`nombre_prod`) REFERENCES `producto` (`nombre_prod`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `manto`
---
-ALTER TABLE `manto`
-  ADD CONSTRAINT `cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `manto_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_prod_ped`) REFERENCES `producto` (`id_item`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_prov_ped`) REFERENCES `prov` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_prov_ped`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `pedido_producto`
+--
+ALTER TABLE `pedido_producto`
+  ADD CONSTRAINT `pedido_producto_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pedido_producto_ibfk_2` FOREIGN KEY (`id_producto_pedido`) REFERENCES `producto` (`id_item`);
 
 --
 -- Filtros para la tabla `productos_vendidos`
@@ -489,12 +407,6 @@ ALTER TABLE `pedidos`
 ALTER TABLE `productos_vendidos`
   ADD CONSTRAINT `productos_vendidos_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `productos_vendidos_ibfk_3` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_item`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `prov`
---
-ALTER TABLE `prov`
-  ADD CONSTRAINT `item` FOREIGN KEY (`id_item`) REFERENCES `producto` (`id_item`);
 
 --
 -- Filtros para la tabla `usuarios`
@@ -506,7 +418,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id_cliente`);
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id_cliente`),
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`vendedor`) REFERENCES `usuarios` (`id_users`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

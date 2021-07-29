@@ -7,14 +7,17 @@ require_once '../../controlador/controlVenta.php';
 $control = new ControlInfoProd();
 if( isset($_POST["accion"])){
     if($_POST["accion"] == "editar"){
-        $control->editarprod($_POST['id'],$_POST['nombre'],$_POST['marca'],$_POST['fechaven'],$_POST['cantidad']);
+        $control->editarprod($_POST['id'],$_POST['nombre'],$_POST['marca'],$_POST['costo'],$_POST['cantidad']);
         $control->volver("../../vistas/inventario/inventario.php");
+        return;
     }
     elseif($_POST["accion"] == "guardar"){
-        $control->guardarprod($_POST['id'],$_POST['nombre'],$_POST['marca'],$_POST['fechaven'],$_POST['cantidad']);
+        $control->guardarprod($_POST['id'],$_POST['nombre'],$_POST['marca'],$_POST['costo'],$_POST['cantidad']);
             $control->volver("../../vistas/inventario/inventario.php");
-        }
+            return;
+        }   
     }
+    exit;
 
 $controlven = new controlVenta();
 $cant = (isset($_GET['cant'])) ? $_GET['cant'] : $_POST['unidad'];

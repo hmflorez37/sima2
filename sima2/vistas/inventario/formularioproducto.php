@@ -20,7 +20,7 @@
                                 <input class="form-control" type="num" name="id"value="" placeholder="serial" id="id" required><br>
                                 <input class="form-control" type="text" name="nombre"value="" placeholder="nombre" id="nombre" required><br>
                                 <input class="form-control" type="text" name="marca" value="" placeholder="marca" id="marca" required><br>
-                                <input class="form-control" type="date" name="fechaven" value="" placeholder="fecha-ven" id="fechaven"><br>
+                                <input class="form-control" type="text" name="costo" value="" placeholder="costo producto" id="costo"><br>
                                 <input class="form-control" type="num" name="cantidad" value="" placeholder="cantidad" id="cantidad" required><br>
                             </div>
                         </div>

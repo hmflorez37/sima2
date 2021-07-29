@@ -40,7 +40,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>id venta</th>
+					<th>Id cliente</th>
 					<th>Fecha</th>
 					<th>Productos vendidos</th>
 					<th>Total</th>
