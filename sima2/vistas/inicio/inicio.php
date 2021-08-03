@@ -1,11 +1,7 @@
 <?php
+
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
-        
-    
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -15,56 +11,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMA</title>
+    <script src="../../JS/grafico.js"></script>
+    <script src="../../JS/chart.min.js"></script>
+    <script src="../../JS/chart.esm.min.js"></script>
+    <script>cargarGraficos();</script>
+
 </head>
 <body>
     <!--contenido-->
 <div class="container-fluid d-flex justify-content-start" id="contenido" >
     <div class="container">
-        <h4>Bienvenido a S.I.M-A</h4>
         <div class="row">
-            <div class="col-md-12">
-                <div class="main-timeline8">
-                    <div class="timeline">
-                        <span class="timeline-icon"></span>
-                        <span class="date">12/05/21</span>
-                        <div class="timeline-content">
-                            <h3 class="title">mantenimiento raul arenas</h3>
-                            <p class="description">
-                                pendiente cambio de culata.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline">
-                        <span class="timeline-icon"></span>
-                        <span class="date">13/03/21</span>
-                        <div class="timeline-content">
-                            <h3 class="title">pedido</h3>
-                            <p class="description">
-                                pendiente pedido kits arrastre akt</p>
-                        </div>
-                    </div>
-                    <div class="timeline">
-                        <span class="timeline-icon"></span>
-                        <span class="date">08/02/21</span>
-                        <div class="timeline-content">
-                            <h3 class="title">recordatorio</h3>
-                            <p class="description">
-                                pendiente llamada saul
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline">
-                        <span class="timeline-icon"></span>
-                        <span class="date">05/01/21</span>
-                        <div class="timeline-content">
-                            <h3 class="title">mantenimiento rincon s.a.s</h3>
-                            <p class="description">
-                                carro entregado a cliente
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-6">
+            <div class="card">
+    <div class="card-header">
+        <h6>PRODUCTOS STOCK BAJO</h6>
+    </div>
+    <div class="card-body">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <canvas id="myChart" width="400" height="300"></canvas>
+        </div>
+        
+        
+    </div>
+    <button></button>
+    </div>
+</div>
             </div>
+            <div class="col-md-6">
+                <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <canvas id="myChart2" width="200" height="200"></canvas>
+            </div>
+            
+            
+        </div>
+        <button></button>
+        </div>
+    </div>
+                </div>
         </div>
     </div>
     <hr>
@@ -76,3 +66,6 @@
 </div>
 </body>
 </html>
+<script>
+    
+    </script>

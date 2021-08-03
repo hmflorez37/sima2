@@ -49,7 +49,7 @@ function auth(action, profile){
 
                     if(document.URL === "http://sima2.com")
                     {
-                        window.location.href = "vistas/inicio";
+                        window.location.href = "http://sima2.com/vistas/inicio";
                     }
                 }
                 else
