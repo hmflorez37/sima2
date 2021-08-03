@@ -7,14 +7,16 @@ class Empleado{
     private $apellido_emp;
     private $celular_emp;
     private $direccion_emp;
+    private $email;
     private $cargo;
 
-    public function __construct($doc,$nombre,$ape,$cel,$dir,$cargo){
+    public function __construct($doc,$nombre,$ape,$cel,$dir,$email,$cargo){
         $this->doc = $doc;
         $this->nombre_emp = $nombre;
         $this->apellido_emp = $ape;
         $this->celular_emp = $cel;
         $this->direccion_emp = $dir;
+        $this->email = $email;
         $this->cargo = $cargo;
     }
     public function obtenerid_emp() {
@@ -31,6 +33,9 @@ class Empleado{
     }
     public function obtenerDireccion_emp() {
         return $this->direccion_emp;
+    }
+    public function obtenerEmail() {
+        return $this->email;
     }
     public function obtenercargo() {
         return $this->cargo;

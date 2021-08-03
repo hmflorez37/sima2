@@ -83,7 +83,7 @@
                                 </a>
                             </div>
                             <div class="navigation">
-                                <a href="../pedidos/pedidos.php">
+                                <a href="../pedidos/verPedidos.php">
                                     <div class="icon">
                                         <i class = "zmdi zmdi-store"> </i>
                                     </div>

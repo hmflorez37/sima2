@@ -1,7 +1,13 @@
 <?php
-    
+	
+    session_start();
+    if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
+    $granTotal = 0;
+    include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,101 +16,145 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I.M.A</title>
+    <link href="../../CSS/select2.min.css" rel="stylesheet"/>
+
+<script src="../../JS/select2.min.js"></script>
+<script src="../../JS/select.js"></script>
+<script src="../../JS/selectcliven.js"></script>
+<script src="../../JS/selectprodventa.js"></script>
+
+
+
 </head>
 <body>
+<div class="container-fluid">
+
+<h1>S.I.M.A VENTA</h1>
+		<?php
+			if(isset($_GET["status"])){
+				if($_GET["status"] === "2"){
+					?>
+                    <script type="text/javascript">alertify.error('Venta Cancelada!');</script>
+					<?php
+				}else if($_GET["status"] === "3"){
+					?>
+                    <script type="text/javascript">alertify.error('Producto quitado de la lista');</script>
+					<?php
+				}else if($_GET["status"] === "4"){
+					?>
+                    <script type="text/javascript">alertify.warning('El producto que no cuenta con todas las unidades insertadas');</script>
+					<?php
+				}else if($_GET["status"] === "5"){
+					?>
+                    <script type="text/javascript">alertify.error('El producto no existe');</script>
+					<?php
+                    }else if($_GET["status"] === "6"){
+                        ?>
+                        <script type="text/javascript">alertify.error('no hay mas unidades disponible');</script>
+                        <?php
+				}else{
+					?>
+                    <script type="text/javascript">alertify.error('Algo salió mal mientras se realizaba la venta');</script>
+					<?php
+				}
+			}
+		?>
+		<br>
+
     
-    <div class="container-fluid">
-        <div class="row">
-    <div class="col-12 d-inline-flex" >
-        <!--container modal-->
-        <div id="contenido" >
-            <div class="row">
-                <div class="col-6 form-check ">
-                <!-- Button action modal -->
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    crear
-                </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">pedir producto</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="row g-3 needs-validation" validate>
-                                
-                                    <div class="col-md-12">
-                                    <input type="text" class="form-control" id="validationCustom02" placeholder="nombre" required>
-                                    <div class="valid-feedback">
-                                    </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" id="validationCustom03" placeholder="marca" required>
-                                        <div class="valid-feedback">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" id="validationCustom04" placeholder="proveedor" required>  
-                                        <div class="valid-feedback">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="number" name="cantidad" class="form-control" placeholder="cantidad" required> 
-                                        <div class="valid-feedback">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary" type="submit">Guardar</button>
-                                        <button class="btn btn-primary" type="reset">limpiar</button>
-    
-                                    </div>
-                                </form> 
-                            </div>
-                            <div class="modal-footer">                 
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-            </div>
+<!--contenido-->
+<div class="container-fuid">
+    <div class="row">
+    <div class="col-9">
+    <form method="post" action="../inventario/gestor.php">
+			<label for="codigo">Código de producto: </label>
+            
+            <input class="form-control"type="hidden" name="unidad" value="1">
+			<input autocomplete="off" autofocus class="form-control" name="codigo" required type="text" id="codigo" placeholder="Escribe el código">
+            
+		</form>
+    </div>
+    <div class="col-3">
+<form action="../inventario/gestor.php" method=GET>
         
+        <div class="col-12">
+            <h5>buscar producto</h5>
+            <select name="prod"class="form-select " id="productov" aria-label="Default select">
+                <option></option>
+            </select>
+            <h5>cantidad de unidades</h5>
+            <input class="form-control"type="num" name=cant value="1">
         </div>
+        <div class="col-12">
+            <input class="form-control btn btn-info"type="submit" value="agregar"name="agregar">
+        </div>
+<!--fin agregar productos-->
+    </form>
+        </div> 
     </div>
-            <ul class="nav nav-tabs ">
-                <li class="nav-item">
-                    <a class="nav-link " id="btn-search"><i class = "zmdi zmdi-search"> </i></a>
-                </li>
-                <input class="form-control form-control-dark w-75" type="text" placeholder="Search" aria-label="Search">
-            </ul>        
-    
-    </div>
-    <!--tabla-->
-    <div class="col-12 tabla">
-        <div class="tabla-Inventario">
-            <table class="table table-striped table-bordered" style="text-align: center;">
-                <caption><label>Articulos</label></caption>
+    <div class="row">
+        <div class="col-9">
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>NOMBRE</td>
-                    <td>MARCA</td>
-                    <td>PROVEEDOR</td>
-                    <td>CANTIDAD</td>
-                    <td>OPCIONES</td>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>MARCA</th>
+                    <th>CANTIDAD</th>
+                    <th>OPCION</th>
+                    
                 </tr>
-            
-            
+            </thead>
+            <tbody>
                 <tr>
-                    <td>PIÑON</td>
-                    <td>Chevrolet</td>
-                    <td>alfredo Sanabria</td>
-                    <td>12</td>
-                    <td> <button class="btn btn-warning" type="#"><i class = "zmdi zmdi-edit"> </i></button> </td>
+                <?php foreach($_SESSION['venta'] as $indice => $mostrar){ 
+                    $granTotal += $mostrar->cantidad_prod;
+					?>
+				<tr>
+                <td><?php echo $mostrar->id_item?></td>
+            <td><?php echo $mostrar ->nombre_prod?></td>
+            <td><?php echo $mostrar ->id_marcas?></td>
+            <td><?php echo $mostrar ->cantidad_prod?></td>
+            <td><a class="btn btn-danger" href="<?php echo "../inventario/gestor.php?indice=" . $indice?>"></a></td>
+
                 </tr>
-            </table>
+                
+                <?php
+                }
+                ?>
+                
+            </tbody>
+        </table>
         </div>
+        <div class="col-3">
+        
+<!--controlador terminar ventas-->
+            
+        <div class="">
+        
+        <form action="../../modelos/terminarVenta.php" method="post">
+        <div class="col-12">
+            
+            <div class="col-12" id="clienteventa">
+               <h5> seleccionar cliente</h5>
+        <select name="clientev"class="form-select "id="clientev" aria-label="Default select">
+                        <option></option>
+
+                    </select>
+            </div>
         </div>
+
+            <h3>Total: <?php echo $granTotal; ?></h3>
+			<input name="total" type="hidden" value="<?php echo $granTotal;?>">
+			<button type="submit" class="btn btn-warning">Terminar venta</button>
+			<a href="../../controlador/cancelarVenta.php" class="btn btn-danger">Cancelar venta</a>
+		</form>
+</div>
+            
+    </div>
         </div>
     </div>
+</div>
+<!--fin de contenido-->
+</div>
 </body>

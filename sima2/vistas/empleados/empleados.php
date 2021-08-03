@@ -46,7 +46,7 @@
                                     </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="number" class="form-control"name="doc_empleado"  placeholder="documento" required>
+                                        <input type="text" class="form-control"name="doc_empleado"  placeholder="documento" required>
                                         <div class="valid-feedback">
                                         </div>
                                     </div>
@@ -57,6 +57,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <input type="text" name="direccion_empleado" class="form-control" placeholder="Ingrese Direccion Residencia" required> 
+                                        <div class="valid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="mail" name="email" class="form-control" placeholder="Ingrese email" required> 
                                         <div class="valid-feedback">
                                         </div>
                                     </div>

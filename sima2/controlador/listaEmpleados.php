@@ -13,6 +13,7 @@ function listare (){
                         <th>APELLIDO</th>
                         <th>CELULAR</th>
                         <th>DIRECION</th>
+                        <th>EMAIL</th>
                         <th>CARGO</th>
                         <th>OPCIONES</th>
                 </tr>
@@ -25,6 +26,7 @@ function listare (){
                         <td><?php echo $mostrar ['apellido_empleado']?></td>
                         <td><?php echo $mostrar ['telefono_empleado']?></td>
                         <td><?php echo $mostrar ['direccion_empleado']?></td>
+                        <td><?php echo $mostrar ['email_empleado']?></td>
                         <td><?php echo $mostrar ['cargo_empleado']?></td>
         <td><form action="../../vistas/empleados/editarempleado.php"method="POST">
                 <input type="hidden" name="id" value="<?php echo $mostrar ['id_empleado']?>">
@@ -32,6 +34,7 @@ function listare (){
                 <input type="hidden" name="apellido" value="<?php echo $mostrar ['apellido_empleado']?>">
                 <input type="hidden" name="telefono"value="<?php echo $mostrar ['telefono_empleado']?>">
                 <input type="hidden" name="direccion"value="<?php echo $mostrar ['direccion_empleado']?>">
+                <input type="hidden" name="email"value="<?php echo $mostrar ['email_empleado']?>">
                 <input type="hidden" name="cargo"value="<?php echo $mostrar ['cargo_empleado']?>">
                 <button class="btn btn-warning" type="submit"value="editar" name="accion"><i class = "zmdi zmdi-edit"> </i></button>
                 

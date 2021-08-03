@@ -14,18 +14,18 @@ class controlEmpleado{
     return $listaEmpleados;
     
     }
-    public function guardarEmpleado($doc,$nombre,$ape,$cel,$dir,$cargo){
+    public function guardarEmpleado($doc,$nombre,$ape,$cel,$dir,$mail,$cargo){
 
-        $empleado = new Empleado($doc,$nombre,$ape,$cel,$dir,$cargo);
+        $empleado = new Empleado($doc,$nombre,$ape,$cel,$dir,$mail,$cargo);
         $gestionEmpleado = new gestionEmpleados();
         $consulta = $gestionEmpleado->guardarEmpleado($empleado);
         
 
 
 }
-public function editarEmpleado($doc,$nombre,$ape,$cel,$dir,$cargo){
+public function editarEmpleado($doc,$nombre,$ape,$cel,$dir,$mail,$cargo){
 
-    $empleado = new Empleado($doc,$nombre,$ape,$cel,$dir,$cargo);
+    $empleado = new Empleado($doc,$nombre,$ape,$cel,$dir,$mail,$cargo);
     $gestionEmpleado = new gestionEmpleados();
     $consulta = $gestionEmpleado->editarEmpleado($empleado);
         

@@ -6,6 +6,7 @@
     $apellido=(isset($_POST['apellido']))?$_POST['apellido'] :"";
     $telefono=(isset($_POST['telefono']))?$_POST['telefono'] :"";
     $direccion=(isset($_POST['direccion']))?$_POST['direccion'] :"";
+    $email=(isset($_POST['email']))?$_POST['email'] :"";
     $cargo=(isset($_POST['cargo']))?$_POST['cargo'] :"";
 ?>
 
@@ -43,6 +44,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <input type="text" value="<?php echo $direccion?>" name="direccion"class="form-control" placeholder="Ingrese Direccion Residencia" required> 
+                                        <div class="valid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="mail" value="<?php echo $email?>" name="email"class="form-control" placeholder="Ingrese email" required> 
                                         <div class="valid-feedback">
                                         </div>
                                     </div>
