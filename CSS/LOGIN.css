@@ -1,0 +1,16 @@
+
+body{
+        background-image: url("../IMAGES/fondo\ 2.jpg");
+    }
+.bg{
+        background-image: url(../IMAGES/sima\ logo\ -\ copia.jpeg);
+        background-position: center center;
+    }
+.text-end{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+.usuario{
+    background-image: url("../IMAGES/fondo.jpg");
+}
