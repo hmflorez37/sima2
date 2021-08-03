@@ -1,0 +1,22 @@
+
+body{
+        background-image: url("../IMAGES/fondo2.jpg");
+    }
+.bg{    background-color: black;
+        background-image: url("../IMAGES/sga.png");
+        background-position: center center;
+    }
+.text-end{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+.usuario{
+    background-image: url("../IMAGES/fondo.jpg");
+}
+#titulo{
+    color: white;
+}
+#l{
+    color: white;
+}
