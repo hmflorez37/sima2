@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2021 a las 05:11:37
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 03-08-2021 a las 04:58:16
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,14 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sima`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `datosGraficos` ()  select * from producto$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -68,8 +76,9 @@ CREATE TABLE `empleado` (
   `id_empleado` int(20) NOT NULL,
   `nombre_empleado` varchar(50) NOT NULL,
   `apellido_empleado` varchar(50) NOT NULL,
-  `telefono_empleado` int(14) NOT NULL,
+  `telefono_empleado` bigint(14) NOT NULL,
   `direccion_empleado` varchar(30) NOT NULL,
+  `email_empleado` varchar(50) NOT NULL,
   `cargo_empleado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,11 +86,9 @@ CREATE TABLE `empleado` (
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`, `cargo_empleado`) VALUES
-(234234, 'juana', 'lopez', 3212343, 'cll50 48 6', 'registradora'),
-(1003842, 'libardo', 'tabares', 31245687, 'cra 43 54 ', 'almacenista'),
-(1029343, 'andres', 'zuluaga', 31029383, 'cll 34 23 45', 'mecanico'),
-(32039484, 'alex', 'cardona', 3128394, 'cra 23 45 67', 'electrico');
+INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`, `email_empleado`, `cargo_empleado`) VALUES
+(12032154, 'andres', 'estepa', 32025468, 'bogota', 'aa@gmail.com', 'oficina'),
+(1057583873, 'HEMERSON', 'FLOREZ', 3105840010, 'Carrera 4#5-38,El Carmen de Ch', 'hemersonflorez@gmail.com', 'administrador');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `costo_producto`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', 20000, 16),
+(1, 'neumatico', 'universal', 20000, 12),
 (2, 'farola derecha', 'renault', 20240212, 9),
 (3, 'casco', 'shaft', 0, 20),
 (4, 'filtro', 'jax', 20210629, 20),
@@ -159,31 +166,31 @@ INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `costo_producto`,
 (10, 'agua', 'universal', 0, 15),
 (11, 'casco', '1', 0, 15),
 (19, 'agua', 'universal', 0, 4),
-(22, 'piñon', '2', 20210531, 0),
+(22, 'piñon', '2', 0, 50),
 (55, 'guaya', 'universal', 0, 14),
 (2358, 'bujia', 'tvs', 20250212, 15),
 (9874, 'Ruana', 'Boyaca Ruanas ', 60000, 2),
-(9876, 'amortiguador de maletero', 'peugeot', 20231012, 0),
-(45678, 'disco defrenos', 'q4', 20230922, 0),
-(46750, 'exploradora chevrolet sail 2014', 'hizone', 20250724, 0),
-(56435, 'fusible', 'generico', 20221220, 0),
-(57493, 'eje primario', 'juki', 20290607, 0),
-(58493, 'bateria', 'ytxl85', 20221118, 0),
-(67554, 'retrovisor', 'jymop', 20310722, 0),
-(76557, 'amortiguador', 'generico', 20210630, 0),
-(78986, 'bombillas', 'ghi', 20240821, 0),
-(86848, 'limpiaparabrisas', 'seat cordoba', 20290522, 0),
-(89009, 'pastillas traseras', 'kia quoris', 20220120, 0),
-(112234, 'aceite 20w', 'mobil super', 20220421, 0),
-(127483, 'palanca de arranque zanella', 'motomel 200', 20250522, 0),
-(543235, 'bujia', 'focus', 20240215, 0),
-(584930, 'carburador discover 125 150', 'generico', 20230316, 0),
-(594384, 'guaya clush', 'ktm', 20211007, 0),
-(658439, 'guardabarros', 'generico', 20210526, 0),
-(796043, 'kit clucht', 'phc', 20230921, 0),
-(876785, 'campana embriague', 'juki', 20250923, 0),
-(889403, 'eje secundario con planos', 'juki', 20261001, 0),
-(964932, 'valvula de escape', 'erid', 20220203, 0);
+(9876, 'amortiguador de maletero', 'peugeot', 0, 13),
+(45678, 'disco defrenos', 'q4', 20230922, 15),
+(46750, 'exploradora chevrolet sail 2014', 'hizone', 20250724, 23),
+(56435, 'fusible', 'generico', 20221220, 14),
+(57493, 'eje primario', 'juki', 20290607, 6),
+(58493, 'bateria', 'ytxl85', 20221118, 10),
+(67554, 'retrovisor', 'jymop', 20310722, 58),
+(76557, 'amortiguador', 'generico', 20210630, 32),
+(78986, 'bombillas', 'ghi', 20240821, 40),
+(86848, 'limpiaparabrisas', 'seat cordoba', 20290522, 25),
+(89009, 'pastillas traseras', 'kia quoris', 20220120, 64),
+(112234, 'aceite 20w', 'mobil super', 20220421, 14),
+(127483, 'palanca de arranque zanella', 'motomel 200', 20250522, 65),
+(543235, 'bujia', 'focus', 20240215, 74),
+(584930, 'carburador discover 125 150', 'generico', 20230316, 2),
+(594384, 'guaya clush', 'ktm', 20211007, 4),
+(658439, 'guardabarros', 'generico', 20210526, 5),
+(796043, 'kit clucht', 'phc', 20230921, 4),
+(876785, 'campana embriague', 'juki', 20250923, 6),
+(889403, 'eje secundario con planos', 'juki', 20261001, 4),
+(964932, 'valvula de escape', 'erid', 20220203, 3);
 
 -- --------------------------------------------------------
 
@@ -217,7 +224,10 @@ INSERT INTO `productos_vendidos` (`id`, `id_producto`, `id_venta`, `cantidad`) V
 (14, 1, 12, 1),
 (15, 1, 13, 1),
 (16, 2, 13, 1),
-(17, 2, 13, 1);
+(17, 2, 13, 1),
+(18, 1, 5, 2),
+(19, 1, 1, 1),
+(20, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -249,18 +259,16 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre_contacto`, `ciudad`, `telefono_
 --
 
 CREATE TABLE `usuarios` (
-  `id_emp` int(50) NOT NULL,
   `nom_user` varchar(50) NOT NULL,
-  `pass_user` varchar(40) NOT NULL,
-  `id_users` int(50) NOT NULL
+  `pass_user` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_emp`, `nom_user`, `pass_user`, `id_users`) VALUES
-(234234, 'admin', 'admin', 4);
+INSERT INTO `usuarios` (`nom_user`, `pass_user`) VALUES
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -282,7 +290,7 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `vendedor`, `costo_total`, `total`) VALUES
-(1, '2021-07-29 04:27:52', 1461817, 4, 0, 2);
+(2, '2021-08-02 21:29:01', 0, 0, 0, 1);
 
 --
 -- Índices para tablas volcadas
@@ -336,13 +344,6 @@ ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id_proveedor`);
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_users`),
-  ADD KEY `id_emp` (`id_emp`);
-
---
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
@@ -370,13 +371,7 @@ ALTER TABLE `pedido_producto`
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_users` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
@@ -400,26 +395,6 @@ ALTER TABLE `pedidos`
 ALTER TABLE `pedido_producto`
   ADD CONSTRAINT `pedido_producto_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pedido_producto_ibfk_2` FOREIGN KEY (`id_producto_pedido`) REFERENCES `producto` (`id_item`);
-
---
--- Filtros para la tabla `productos_vendidos`
---
-ALTER TABLE `productos_vendidos`
-  ADD CONSTRAINT `productos_vendidos_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `productos_vendidos_ibfk_3` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_item`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `empleado` (`id_empleado`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ventas`
---
-ALTER TABLE `ventas`
-  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`id_cliente`),
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`vendedor`) REFERENCES `usuarios` (`id_users`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
