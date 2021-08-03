@@ -4,7 +4,7 @@ require_once '../modelos/selectajax.php';
 $lista= new selectajax();
 $datos=$lista->lista_cliente();
 $prod=$lista->lista_producto();
-
+$proveedor=$lista->lista_proveedor();
 switch($_GET["op"]){
 
     case "combo":
@@ -34,6 +34,17 @@ switch($_GET["pro"]){
     
 }
 
-/*$PV = new selectajax();
-$dato = $PV->lista_producto();
-echo json_encode($dato);*/
+switch($_GET["proveedor"]){
+
+    case "combo":
+        
+        if(is_array($proveedor)==true and count($proveedor)>0){
+            $html= "<option></option>";
+            foreach($proveedor as $row){
+                $html.= "<option value='".$row['id_proveedor']."'>".$row['nombre_contacto']."--".$row['id_proveedor']."</option>";
+            }
+            echo $html;      
+        }
+    break;
+    
+}

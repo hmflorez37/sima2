@@ -25,7 +25,7 @@
 	
 		<h1>Ventas</h1>
 		<div class="col-1">
-			<a class="btn btn-secondary" href="./ventas.php">Nueva </a>
+			<a class="btn btn-secondary" href="./pedidos.php">Nueva </a>
 		</div>
 
 

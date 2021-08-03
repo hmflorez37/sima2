@@ -29,7 +29,7 @@
 <body>
 <div class="container-fluid">
 
-<h1>S.I.M.A VENTA</h1>
+<h1>S.G.A PEDIDO</h1>
 		<?php
 			if(isset($_GET["status"])){
 				if($_GET["status"] === "2"){
@@ -132,12 +132,12 @@
             
         <div class="">
         
-        <form action="../../modelos/terminarVenta.php" method="post">
+        <form action="../../modelos/terminarpedido.php" method="post">
         <div class="col-12">
             
             <div class="col-12" id="clienteventa">
-               <h5> seleccionar cliente</h5>
-        <select name="clientev"class="form-select "id="clientev" aria-label="Default select">
+               <h5> Seleccionar Proveedor</h5>
+        <select name="proveedor"class="form-select "id="proveedor" aria-label="Default select">
                         <option></option>
 
                     </select>
@@ -146,8 +146,8 @@
 
             <h3>Total: <?php echo $granTotal; ?></h3>
 			<input name="total" type="hidden" value="<?php echo $granTotal;?>">
-			<button type="submit" class="btn btn-warning">Terminar venta</button>
-			<a href="../../controlador/cancelarVenta.php" class="btn btn-danger">Cancelar venta</a>
+			<button type="submit" class="btn btn-warning">Terminar Pedido</button>
+			<a href="../../controlador/cancelarpedido.php" class="btn btn-danger">Cancelar Pedido</a>
 		</form>
 </div>
             
