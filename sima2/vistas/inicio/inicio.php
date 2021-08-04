@@ -2,7 +2,6 @@
 
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,7 @@
     <script src="../../JS/grafico.js"></script>
     <script src="../../JS/chart.min.js"></script>
     <script src="../../JS/chart.esm.min.js"></script>
-    <script>cargarGraficos();</script>
+    <script></script>
 
 </head>
 <body>
@@ -24,45 +23,25 @@
         <div class="row">
             <div class="col-md-6">
             <div class="card">
-    <div class="card-header">
-        <h6>PRODUCTOS STOCK BAJO</h6>
-    </div>
-    <div class="card-body">
-    <div class="row">
-        <div class="col-lg-12 ">
-            <canvas id="myChart" width="400" height="300"></canvas>
-        </div>
-        
-        
-    </div>
-    <button></button>
-    </div>
-</div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-        <div class="card-header">
-        </div>
-        <div class="card-body">
-        <div class="row">
-            <div class="col-lg-12">
-                <canvas id="myChart2" width="200" height="200"></canvas>
-            </div>
-            
-            
-        </div>
-        <button></button>
-        </div>
-    </div>
-                </div>
-        </div>
-    </div>
-    <hr>
-</div>
-        </div>
-    </div>
+                <div class="card-header">
 
+                </div>
+                <div class="row">
+                    <div class="card-body">
+                        <div class="col-lg-2">
+                            <button class="btn btn-secondary"onclick="cargarGraficos();">graficoBar</button>
+                        </div><div class="col-lg-2">
+                            <button class="btn btn-secondary"onclick="cargarGraficostorta();">graficotorta</button>
+                        </div>
+                        
+                    </div>
+                    <canvas id="graficoStock" width="400" height="340"></canvas>
+                    <canvas id="graficoTorta" width="400" height="340"></canvas>
+                </div>
+                
 </div>
+            </div>
+    </div>
 </div>
 </body>
 </html>

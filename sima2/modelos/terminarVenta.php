@@ -12,7 +12,7 @@ include_once "../modelos/databasepdo.php";
 $pdo=new base();
         $pdo=$pdo->construct();
 
-
+date_default_timezone_set('America/Bogota_City');
 $ahora = date("Y-m-d H:i:s");
 
 

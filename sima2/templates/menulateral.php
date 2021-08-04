@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php session_start(); 
+$nombre = $_SESSION['nombre'];
+$tipo_session = $_SESSION['tipo_usuario'];
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +38,7 @@
                             <img src="../../assets/img/avatar-male.png" alt="avatar">
                         </div>
                         <div id="name">
-                            <span>empleado</span>
+                            <span><?php echo $nombre;?></span>
                         </div>
                     </div>
                     <!--lateral-navigation-->
@@ -65,6 +68,7 @@
                                 <div class="title">VENTAS</div>
                             </a>
                         </div>
+                        <?php if($tipo_session == "administrador"){?>
                         <div class="navigation">
                                 <a href="../inventario/inventario.php">
                                     <div class="icon">
@@ -90,6 +94,8 @@
                                     <div class="title">PEDIDOS</div>
                                 </a>
                         </div>
+                        
+
                             <div class="navigation">
                                 <a href="../empleados/empleados.php">
                                     <div class="icon">
@@ -98,6 +104,7 @@
                                     <div class="title">EMPLEADOS</div>
                                 </a>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

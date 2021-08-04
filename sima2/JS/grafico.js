@@ -13,13 +13,36 @@ function cargarGraficos(){
             titulo.push(data[i][1]);
             cantidad.push(data[i][4]);
         }
-        var ctx = document.getElementById('myChart');
+        crearGrafico(titulo,cantidad,'bar','PRODUCTOS EN STOCK BAJO','graficoStock');
+    })
+}
+function cargarGraficostorta(){
+    $.ajax({
+        url: '../../controlador/controlador_grafico.php',
+        type: 'POST',
+
+
+    }).done(function(resp){
+        var titulo = [];
+        var cantidad= [];
+        var data = JSON.parse(resp);
+        for (var i = 0; i < data.length; i++) {
+            
+            titulo.push(data[i][1]);
+            cantidad.push(data[i][4]);
+        }
+        crearGrafico(titulo,cantidad,'pie','stock','graficoTorta');
+    })
+}
+function crearGrafico(titulo,cantidad,tipo,encabezado,id){
+
+    var ctx = document.getElementById(id);
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: tipo,
         data: {
             labels: titulo,
             datasets: [{
-                label: '# of Votes',
+                label: encabezado,
                 data: cantidad,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -43,5 +66,5 @@ function cargarGraficos(){
         
     });
         
-    })
+
 }

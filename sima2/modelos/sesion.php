@@ -13,19 +13,24 @@ class sesion{
         
         $username = $userna;
         $password = $pass;
-        $sentencia = $this->pdo->prepare("SELECT * FROM usuarios ");
+        $sentencia = $this->pdo->prepare("SELECT * FROM empleado where email_empleado ='$username' ");
         $sentencia->execute();
         $result=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $datos){
-        $nom=$datos['nom_user'];
-        $pas=$datos['pass_user'];
+        $nom=$datos['email_empleado'];
+        $pas=$datos['password'];
         }
         if ($nom===$username){
             if ($pas === $password){
+                session_start();
+                if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
+   
+                $_SESSION['nombre']= $datos['nombre_empleado'];
+                $_SESSION['tipo_usuario']= $datos['cargo_empleado'];
                 header("Location: ../vistas/inicio/inicio.php");
             }
         }else{
-            header("Location: ../index.php");
+            header("Location: ../index.php?login=1");
         }
 
         }

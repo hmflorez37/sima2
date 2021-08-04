@@ -24,7 +24,7 @@
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li nav-item>
                         
-                    <a class="btn btn-outline-secondary" href="../../index.php"> </i> Sign out </a>
+                    <a class="btn btn-outline-secondary" href="../../controlador/logout.php"> </i> Sign out </a>
                     </li>
                     <li nav-item>
                         <a class="nav-link" href="">

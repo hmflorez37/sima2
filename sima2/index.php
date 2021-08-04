@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -8,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/LOGIN.css">
     <link rel="stylesheet" href="./CSS/login-min.css">
+    <link rel="stylesheet" href="../../CSS/alertify.min.css" />
+    <script src="../../JS/alertify.min.js"></script>
 
     <!--scripts-->
 
@@ -32,7 +35,7 @@
                 <form action="controlador/sesion.php" method="post">
                     <div class="mb-4">
                         <label id="l"for="user-name" class="
-                        form-label">nombre de usuario</label>
+                        form-label">ingrese email</label>
                         <input type="text" class="form-control" name="user-name"required>
                     </div>
                     <div class="mb-4"> <label id="l"for="password" class="
@@ -43,6 +46,13 @@
                         <div  class="g-signin2" data-onsuccess="onSignIn"></div><br>
                     </div>
                 </form>
+                <?php
+    if(isset($_GET["login"])){
+        if($_GET["login"] === "1"){
+            ?>
+            <script type="text/javascript">alertify.error('correo o contraseña incorrectos!');</script>
+            <?php }}
+?>
             </div>
         </div>
     </div>

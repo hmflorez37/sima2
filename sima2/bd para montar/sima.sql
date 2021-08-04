@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2021 a las 04:58:16
+-- Tiempo de generación: 04-08-2021 a las 03:07:56
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -79,6 +79,7 @@ CREATE TABLE `empleado` (
   `telefono_empleado` bigint(14) NOT NULL,
   `direccion_empleado` varchar(30) NOT NULL,
   `email_empleado` varchar(50) NOT NULL,
+  `password` varchar(10) NOT NULL,
   `cargo_empleado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -86,9 +87,9 @@ CREATE TABLE `empleado` (
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`, `email_empleado`, `cargo_empleado`) VALUES
-(12032154, 'andres', 'estepa', 32025468, 'bogota', 'aa@gmail.com', 'oficina'),
-(1057583873, 'HEMERSON', 'FLOREZ', 3105840010, 'Carrera 4#5-38,El Carmen de Ch', 'hemersonflorez@gmail.com', 'administrador');
+INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`, `email_empleado`, `password`, `cargo_empleado`) VALUES
+(12032154, 'andres', 'estepa', 32025468, 'bogota', 'diego@gmail.com', 'vendedor', 'vendedor'),
+(1057583873, 'HEMERSON', 'FLOREZ', 3105840010, 'Carrera 4#5-38,El Carmen de Ch', 'hemersonflorez@gmail.com', 'xyn47c', 'administrador');
 
 -- --------------------------------------------------------
 
@@ -125,16 +126,6 @@ CREATE TABLE `pedido_producto` (
   `cantidad` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `pedido_producto`
---
-
-INSERT INTO `pedido_producto` (`id`, `id_producto_pedido`, `id_pedido`, `cantidad`) VALUES
-(1, 46750, 2, 10),
-(3, 10, 2, 7),
-(4, 543235, 3, 3),
-(5, 11, 3, 5);
-
 -- --------------------------------------------------------
 
 --
@@ -154,43 +145,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `costo_producto`, `cantidad_prod`) VALUES
-(1, 'neumatico', 'universal', 20000, 12),
-(2, 'farola derecha', 'renault', 20240212, 9),
-(3, 'casco', 'shaft', 0, 20),
-(4, 'filtro', 'jax', 20210629, 20),
-(5, 'manguera', 'akt', 20210610, 13),
-(6, 'casco', 'jax', 20210623, 10),
-(7, 'manguera', 'tvs', 20210624, 4),
-(8, 'carenaje', 'honda cb125', 20250628, 7),
-(9, 'tornillo', 'universal', 20210630, 99),
-(10, 'agua', 'universal', 0, 15),
-(11, 'casco', '1', 0, 15),
-(19, 'agua', 'universal', 0, 4),
-(22, 'piñon', '2', 0, 50),
-(55, 'guaya', 'universal', 0, 14),
-(2358, 'bujia', 'tvs', 20250212, 15),
-(9874, 'Ruana', 'Boyaca Ruanas ', 60000, 2),
-(9876, 'amortiguador de maletero', 'peugeot', 0, 13),
-(45678, 'disco defrenos', 'q4', 20230922, 15),
-(46750, 'exploradora chevrolet sail 2014', 'hizone', 20250724, 23),
-(56435, 'fusible', 'generico', 20221220, 14),
-(57493, 'eje primario', 'juki', 20290607, 6),
-(58493, 'bateria', 'ytxl85', 20221118, 10),
-(67554, 'retrovisor', 'jymop', 20310722, 58),
-(76557, 'amortiguador', 'generico', 20210630, 32),
-(78986, 'bombillas', 'ghi', 20240821, 40),
-(86848, 'limpiaparabrisas', 'seat cordoba', 20290522, 25),
-(89009, 'pastillas traseras', 'kia quoris', 20220120, 64),
-(112234, 'aceite 20w', 'mobil super', 20220421, 14),
-(127483, 'palanca de arranque zanella', 'motomel 200', 20250522, 65),
-(543235, 'bujia', 'focus', 20240215, 74),
-(584930, 'carburador discover 125 150', 'generico', 20230316, 2),
-(594384, 'guaya clush', 'ktm', 20211007, 4),
-(658439, 'guardabarros', 'generico', 20210526, 5),
-(796043, 'kit clucht', 'phc', 20230921, 4),
-(876785, 'campana embriague', 'juki', 20250923, 6),
-(889403, 'eje secundario con planos', 'juki', 20261001, 4),
-(964932, 'valvula de escape', 'erid', 20220203, 3);
+(1, 'chaqueta', 'totto', 150000, 11),
+(555555, 'jjkhv', 'tfty', 20, 15);
 
 -- --------------------------------------------------------
 
@@ -210,24 +166,7 @@ CREATE TABLE `productos_vendidos` (
 --
 
 INSERT INTO `productos_vendidos` (`id`, `id_producto`, `id_venta`, `cantidad`) VALUES
-(3, 2, 1, 1),
-(4, 3, 1, 1),
-(5, 1, 3, 1),
-(6, 5, 3, 1),
-(7, 9, 3, 1),
-(8, 1, 4, 1),
-(9, 2, 5, 1),
-(10, 1, 7, 1),
-(11, 55, 7, 1),
-(12, 5, 8, 1),
-(13, 1, 12, 1),
-(14, 1, 12, 1),
-(15, 1, 13, 1),
-(16, 2, 13, 1),
-(17, 2, 13, 1),
-(18, 1, 5, 2),
-(19, 1, 1, 1),
-(20, 1, 2, 1);
+(3, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -255,24 +194,6 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre_contacto`, `ciudad`, `telefono_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `nom_user` varchar(50) NOT NULL,
-  `pass_user` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`nom_user`, `pass_user`) VALUES
-('admin', 'admin');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `ventas`
 --
 
@@ -290,7 +211,7 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `vendedor`, `costo_total`, `total`) VALUES
-(2, '2021-08-02 21:29:01', 0, 0, 0, 1);
+(2, '2021-08-04 03:06:01', 342344, 0, 0, 1);
 
 --
 -- Índices para tablas volcadas
@@ -371,7 +292,7 @@ ALTER TABLE `pedido_producto`
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

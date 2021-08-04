@@ -10,7 +10,7 @@
 
 
 		function llamardatos(){
-			$sql = "SELECT * FROM producto";	
+			$sql = "SELECT * FROM producto where cantidad_prod <= 5 ";	
 			$arreglo = array();
 			if ($consulta = $this->conexion->conexion->query($sql)) {
 

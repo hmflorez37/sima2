@@ -1,12 +1,12 @@
 <?php
 	
-    session_start();
-    if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
-    $granTotal = 0;
+    
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
     
+    if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
+    $granTotal = 0;
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +66,7 @@
 <div class="container-fuid">
     <div class="row">
     <div class="col-9">
-    <form method="post" action="../inventario/gestor.php">
+    <form method="post" action="puente.php">
 			<label for="codigo">Código de producto: </label>
             
             <input class="form-control"type="hidden" name="unidad" value="1">
