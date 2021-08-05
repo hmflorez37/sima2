@@ -29,18 +29,16 @@
                 <div class="row">
                     <div class="card-body">
                         <div class="col-lg-2">
-                            <button class="btn btn-secondary"onclick="cargarGraficos();">graficoBar</button>
-                        </div><div class="col-lg-2">
-                            <button class="btn btn-secondary"onclick="cargarGraficostorta();">graficotorta</button>
+                            <script>cargarGraficos()</script>
                         </div>
-                        
                     </div>
-                    <canvas id="graficoStock" width="400" height="340"></canvas>
-                    <canvas id="graficoTorta" width="400" height="340"></canvas>
+                    <canvas id="graficoStock" width="400" height="320"></canvas>
                 </div>
-                
-</div>
             </div>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
     </div>
 </div>
 </body>

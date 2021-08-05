@@ -21,6 +21,6 @@
 				$this->conexion->cerrar();	
 			}
 		}
+		
 	}
 ?>
- 

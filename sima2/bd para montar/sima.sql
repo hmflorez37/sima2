@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2021 a las 03:07:56
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.3.27
+-- Tiempo de generación: 05-08-2021 a las 06:05:38
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,7 +100,6 @@ INSERT INTO `empleado` (`id_empleado`, `nombre_empleado`, `apellido_empleado`, `
 CREATE TABLE `pedidos` (
   `id_pedido` int(50) NOT NULL,
   `fecha_pedido` date NOT NULL,
-  `Marca_Prod_ped` varchar(50) NOT NULL,
   `id_prov_ped` int(50) NOT NULL,
   `Cant_Prod_ped` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -109,9 +108,8 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `Marca_Prod_ped`, `id_prov_ped`, `Cant_Prod_ped`) VALUES
-(2, '2021-07-01', 'levis', 3213245, 21),
-(3, '2021-07-15', 'diesel', 2345352, 14);
+INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `id_prov_ped`, `Cant_Prod_ped`) VALUES
+(1, '2021-08-05', 2345352, 40);
 
 -- --------------------------------------------------------
 
@@ -125,6 +123,16 @@ CREATE TABLE `pedido_producto` (
   `id_pedido` int(50) NOT NULL,
   `cantidad` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedido_producto`
+--
+
+INSERT INTO `pedido_producto` (`id`, `id_producto_pedido`, `id_pedido`, `cantidad`) VALUES
+(1, 1, 1, 10),
+(2, 66, 1, 10),
+(3, 88, 1, 10),
+(4, 555555, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -145,8 +153,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_item`, `nombre_prod`, `id_marcas`, `costo_producto`, `cantidad_prod`) VALUES
-(1, 'chaqueta', 'totto', 150000, 11),
-(555555, 'jjkhv', 'tfty', 20, 15);
+(1, 'chaqueta', 'totto', 150000, 1),
+(66, 'Buso ', 'Armani', 60000, 40),
+(88, 'Equipo sonido', 'Panasonnic', 600000, 8),
+(555555, 'jjkhv', 'tfty', 20, 14);
 
 -- --------------------------------------------------------
 
@@ -166,7 +176,14 @@ CREATE TABLE `productos_vendidos` (
 --
 
 INSERT INTO `productos_vendidos` (`id`, `id_producto`, `id_venta`, `cantidad`) VALUES
-(3, 1, 2, 1);
+(3, 1, 2, 1),
+(4, 1, 3, 2),
+(5, 1, 4, 2),
+(6, 1, 5, 1),
+(7, 555555, 5, 1),
+(8, 1, 6, 3),
+(9, 1, 7, 2),
+(10, 1, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -202,7 +219,6 @@ CREATE TABLE `ventas` (
   `fecha` datetime NOT NULL,
   `cliente` int(20) NOT NULL,
   `vendedor` int(20) NOT NULL,
-  `costo_total` bigint(50) NOT NULL,
   `total` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -210,8 +226,14 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `vendedor`, `costo_total`, `total`) VALUES
-(2, '2021-08-04 03:06:01', 342344, 0, 0, 1);
+INSERT INTO `ventas` (`id`, `fecha`, `cliente`, `vendedor`, `total`) VALUES
+(2, '2021-08-04 03:06:01', 342344, 0, 1),
+(3, '2021-08-04 05:46:20', 0, 0, 2),
+(4, '2021-08-04 05:48:45', 354234, 0, 2),
+(5, '2021-08-05 02:40:11', 1461817, 0, 2),
+(6, '2021-08-05 03:02:39', 98384843, 0, 3),
+(7, '2021-08-05 03:03:55', 0, 0, 2),
+(8, '2021-08-05 03:18:20', 354234, 0, 2);
 
 --
 -- Índices para tablas volcadas
@@ -280,25 +302,25 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pedido` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_producto`
 --
 ALTER TABLE `pedido_producto`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_vendidos`
 --
 ALTER TABLE `productos_vendidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

@@ -29,7 +29,7 @@
 <body>
 <div class="container-fluid">
 
-<h1>S.G.A VENTA</h1>
+
 		<?php
 			if(isset($_GET["status"])){
 				if($_GET["status"] === "2"){
@@ -64,8 +64,16 @@
     
 <!--contenido-->
 <div class="container-fuid">
+<div class="col-12">
     <div class="row">
-    <div class="col-9">
+    
+    <div class="col-6">
+    <div class="row">
+        <div class="col-2">
+            <h3 >S.G.A VENTA</h3>
+        </div>
+        <div class="col-10">
+            
     <form method="post" action="puente.php">
 			<label for="codigo">Código de producto: </label>
             
@@ -73,24 +81,31 @@
 			<input autocomplete="off" autofocus class="form-control" name="codigo" required type="text" id="codigo" placeholder="Escribe el código">
             
 		</form>
+        </div>
     </div>
-    <div class="col-3">
+    
+    </div>
+    <div class="col-6">
 <form action="puente.php" method=GET>
-        
-        <div class="col-12">
+        <div class=row>
+        <div class="col-6">
             <h5>buscar producto</h5>
             <select name="prod"class="form-select " id="productov" aria-label="Default select">
                 <option></option>
             </select>
-            <h5>cantidad de unidades</h5>
+        </div>
+        <div class="col-3">
+            <h5>cantidad</h5>
             <input class="form-control"type="num" name=cant value="1">
         </div>
-        <div class="col-12">
+        <div class="col-3">
             <input class="form-control btn btn-info"type="submit" value="agregar"name="agregar">
+        </div>
         </div>
 <!--fin agregar productos-->
     </form>
         </div> 
+    </div>
     </div>
     <div class="row">
         <div class="col-9">
@@ -136,7 +151,7 @@
         <div class="col-12">
             
             <div class="col-12" id="clienteventa">
-               <h5> seleccionar cliente</h5>
+                <h5> seleccionar cliente</h5>
         <select name="clientev"class="form-select "id="clientev" aria-label="Default select">
                         <option></option>
 

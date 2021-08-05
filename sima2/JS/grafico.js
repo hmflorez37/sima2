@@ -2,6 +2,7 @@ function cargarGraficos(){
     $.ajax({
         url: '../../controlador/controlador_grafico.php',
         type: 'POST',
+        data:"stock",
 
 
     }).done(function(resp){
@@ -16,10 +17,11 @@ function cargarGraficos(){
         crearGrafico(titulo,cantidad,'bar','PRODUCTOS EN STOCK BAJO','graficoStock');
     })
 }
-function cargarGraficostorta(){
+function cargarGraficoVenta(){
     $.ajax({
         url: '../../controlador/controlador_grafico.php',
         type: 'POST',
+        data:"ventas",
 
 
     }).done(function(resp){
@@ -31,7 +33,7 @@ function cargarGraficostorta(){
             titulo.push(data[i][1]);
             cantidad.push(data[i][4]);
         }
-        crearGrafico(titulo,cantidad,'pie','stock','graficoTorta');
+        crearGrafico(titulo,cantidad,'pie','VENTAS DIARIAS','graficoVentas');
     })
 }
 function crearGrafico(titulo,cantidad,tipo,encabezado,id){

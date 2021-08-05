@@ -3,7 +3,8 @@
 
 session_start();
 
-
+$vendedor= $_SESSION['nombre'];
+echo($vendedor);
 $clientev=(isset($_POST['clientev']))?$_POST['clientev']:"";
 echo($clientev);
 $total=(isset($_POST['total']))?$_POST['total']:"";
@@ -12,12 +13,12 @@ include_once "../modelos/databasepdo.php";
 $pdo=new base();
         $pdo=$pdo->construct();
 
-date_default_timezone_set('America/Bogota_City');
 $ahora = date("Y-m-d H:i:s");
 
 
-$sentencia = $pdo->prepare("INSERT INTO `ventas`(`fecha`, `cliente`, `total`) VALUES (?, ?, ?);");
-$sentencia->execute([$ahora, $clientev, $total]);
+
+$sentencia = $pdo->prepare("INSERT INTO `ventas`(`fecha`, `cliente`,`vendedor`, `total`) VALUES (?, ?, ?,?);");
+$sentencia->execute([$ahora, $clientev,$vendedor, $total]);
 
 $sentencia = $pdo->prepare("SELECT id FROM ventas ORDER BY id DESC LIMIT 1;");
 $sentencia->execute();
