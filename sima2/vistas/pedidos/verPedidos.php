@@ -19,11 +19,11 @@
 <?php if(isset($_GET["status"])){
 		if($_GET["status"] === "1"){
 			?>
-			<script type="text/javascript">alertify.success('Venta registrada!');</script>
+			<script type="text/javascript">alertify.success('Pedido registrada!');</script>
 
 	<?php	}} ?>
 	
-		<h1>Ventas</h1>
+		<h1>Pedido</h1>
 		<div class="col-1">
 			<a class="btn btn-secondary" href="./pedidos.php">Nueva </a>
 		</div>
@@ -31,26 +31,26 @@
 
     <div class="row" id="ventas">
     <?php
-$sentencia = $pdo->query("SELECT ventas.total, ventas.fecha, ventas.id,ventas.cliente, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', productos_vendidos.cantidad SEPARATOR '__') AS producto FROM ventas INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN producto ON producto.id_item = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id");
-$ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+$sentencia = $pdo->query("SELECT pedidos.Cant_Prod_ped, pedidos.fecha_pedido, pedidos.id_pedido, pedidos.id_prov_ped, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', pedido_producto.cantidad SEPARATOR '__') AS producto FROM pedidos INNER JOIN pedido_producto ON pedido_producto.id_pedido = pedidos.id_pedido INNER JOIN producto ON producto.id_item = pedido_producto.id_producto_pedido GROUP BY pedidos.id_pedido ORDER BY pedidos.id_pedido");
+$pedido = $sentencia->fetchAll(PDO::FETCH_OBJ);
 ?>
-
+<?php if($tipo_session == "administrador"){?>
 	<div class="col-xs-12">
 
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Id cliente</th>
+					<th>Id proveedor</th>
 					<th>Fecha</th>
-					<th>Productos vendidos</th>
+					<th>Productos solicitados</th>
 					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($ventas as $venta){ ?>
+				<?php foreach($pedido as $pedido){ ?>
 				<tr>
-					<td><?php echo $venta->cliente ?></td>
-					<td><?php echo $venta->fecha ?></td>
+					<td><?php echo $pedido->id_prov_ped?></td>
+					<td><?php echo $pedido->fecha_pedido ?></td>
 					<td>
 						<table class="table table-bordered">
 							<thead>
@@ -62,7 +62,7 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 							</thead>
 							<tbody>
                             
-								<?php foreach(explode("__", $venta->producto) as $productosConcatenados){ 
+								<?php foreach(explode("__", $pedido->producto) as $productosConcatenados){ 
 								$producto = explode("..", $productosConcatenados)
 								?>
 								<tr>
@@ -74,11 +74,12 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 							</tbody>
 						</table>
 					</td>
-					<td><?php echo $venta->total ?></td>
+					<td><?php echo $pedido->Cant_Prod_ped ?></td>
 				</tr>
 				<?php } ?>
 			</tbody>
 		</table>
 	</div>
+	<?php } ?>
     </div>
 </body>

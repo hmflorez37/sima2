@@ -26,7 +26,7 @@ switch($_GET["pro"]){
         if(is_array($prod)==true and count($prod)>0){
             $html= "<option></option>";
             foreach($prod as $row){
-                $html.= "<option value='".$row['id_item']."'>".$row['nombre_prod']."</option>";
+                $html.= "<option value='".$row['id_item']."'>".$row['nombre_prod']." --"$row['id_marcas']"</option>";
             }
             echo $html;      
         }

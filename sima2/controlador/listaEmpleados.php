@@ -14,7 +14,6 @@ function listare (){
                         <th>CELULAR</th>
                         <th>DIRECION</th>
                         <th>EMAIL</th>
-                        <th>CLAVE</th>
                         <th>CARGO</th>
                         <th>OPCIONES</th>
                 </tr>
@@ -28,7 +27,6 @@ function listare (){
                         <td><?php echo $mostrar ['telefono_empleado']?></td>
                         <td><?php echo $mostrar ['direccion_empleado']?></td>
                         <td><?php echo $mostrar ['email_empleado']?></td>
-                        <td><?php echo $mostrar ['password']?></td>
                         <td><?php echo $mostrar ['cargo_empleado']?></td>
         <td><form action="../../vistas/empleados/editarempleado.php"method="POST">
                 <input type="hidden" name="id" value="<?php echo $mostrar ['id_empleado']?>">

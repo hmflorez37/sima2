@@ -7,6 +7,7 @@
     $telefono=(isset($_POST['telefono']))?$_POST['telefono'] :"";
     $direccion=(isset($_POST['direccion']))?$_POST['direccion'] :"";
     $email=(isset($_POST['email']))?$_POST['email'] :"";
+    $clave=(isset($_POST['password']))?$_POST['password'] :"";
     $cargo=(isset($_POST['cargo']))?$_POST['cargo'] :"";
 ?>
 
@@ -17,7 +18,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">PRODUCTO</h5>
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR EMPLEADO</h5>
     </div>
     <div class="modal-body">
         <div class="form-row">
@@ -49,6 +50,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <input type="mail" value="<?php echo $email?>" name="email"class="form-control" placeholder="Ingrese email" required> 
+                                        <div class="valid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<?php echo $clave?>" name="password"class="form-control" placeholder="Ingrese clave" required> 
                                         <div class="valid-feedback">
                                         </div>
                                     </div>

@@ -18,7 +18,7 @@ class sesion{
         $result=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $datos){
         $nom=$datos['email_empleado'];
-        $pas=$datos['password'];
+        $pas= $datos['password'];
         }
         if ($nom===$username){
             if ($pas === $password){

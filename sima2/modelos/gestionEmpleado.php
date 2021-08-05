@@ -38,8 +38,9 @@ class gestionEmpleados{
         $celular_emp = $empleado->obtenerTelefono_emp();
         $direccion_emp = $empleado->obtenerDireccion_emp();
         $email= $empleado->obtenerEmail();
+        $clave= $empleado->obtenerClave();
         $cargo = $empleado->obtenercargo();
-        $sentencia=$this->pdo->prepare("INSERT INTO `empleado`(`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`,`email_empleado`, `cargo_empleado`) VALUES('$doc','$nombre_emp','$apellido_emp','$celular_emp','$direccion_emp','$email','$cargo')");
+        $sentencia=$this->pdo->prepare("INSERT INTO `empleado`(`id_empleado`, `nombre_empleado`, `apellido_empleado`, `telefono_empleado`, `direccion_empleado`,`email_empleado`, `password`,`cargo_empleado`) VALUES('$doc','$nombre_emp','$apellido_emp','$celular_emp','$direccion_emp','$email', '$clave','$cargo')");
         $sentencia->execute();
         
 
@@ -51,9 +52,10 @@ class gestionEmpleados{
         $telefono_empleado = $empleado->obtenerTelefono_emp();
         $direccion_empleado = $empleado->obtenerDireccion_emp();
         $email= $empleado->obtenerEmail();
+        $clave= $empleado->obtenerClave();
         $cargo_empleado = $empleado->obtenercargo();
 
-        $sentencia=$this->pdo->prepare("UPDATE `empleado` SET `nombre_empleado`='$nombre_empleado',`apellido_empleado`='$apellido_empleado',`telefono_empleado`='$telefono_empleado',`direccion_empleado`='$direccion_empleado',`email_empleado`='$email',`cargo_empleado`='$cargo_empleado' where `id_empleado`='$id_empleado'");
+        $sentencia=$this->pdo->prepare("UPDATE `empleado` SET `nombre_empleado`='$nombre_empleado',`apellido_empleado`='$apellido_empleado',`telefono_empleado`='$telefono_empleado',`direccion_empleado`='$direccion_empleado',`email_empleado`='$email',  `password`='$clave',`cargo_empleado`='$cargo_empleado' where `id_empleado`='$id_empleado'");
             $sentencia->execute();
     }
 }

@@ -29,7 +29,7 @@
 <body>
 <div class="container-fluid">
 
-<h1>S.I.M.A VENTA</h1>
+<h1>S.G.A VENTA</h1>
 		<?php
 			if(isset($_GET["status"])){
 				if($_GET["status"] === "2"){
@@ -75,7 +75,7 @@
 		</form>
     </div>
     <div class="col-3">
-<form action="../inventario/gestor.php" method=GET>
+<form action="puente.php" method=GET>
         
         <div class="col-12">
             <h5>buscar producto</h5>
@@ -115,7 +115,7 @@
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><a class="btn btn-danger" href="<?php echo "../inventario/gestor.php?indice=" . $indice?>"></a></td>
+            <td><a class="btn btn-danger" href="<?php echo "puente.php?indice=" . $indice?>"></a></td>
 
                 </tr>
                 

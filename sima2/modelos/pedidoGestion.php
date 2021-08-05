@@ -19,16 +19,13 @@ class pedidoGestion{
         $prodlistado = $sentencia->fetch(PDO::FETCH_OBJ);
         if ($prodlistado->cantidad_prod < 1) {
 
-        header("Location: ../pedidos/pedidos.php?status=5");// revisar de donde lo hala
+        header("Location: ../pedidos/pedidos.php?status=5");
         exit;
     }
-    if ($cant > $prodlistado->cantidad_prod) {
-    header("Location: ../pedidos/pedidos.php?status=4");
-    exit;
-    }   
+    
 session_start();
 $indice = false;
-for ($i = 0; $i < count($_SESSION["venta"]); $i++) {  // revisar
+for ($i = 0; $i < count($_SESSION["venta"]); $i++) {  
     if ($_SESSION["venta"][$i]->id_item === $producto) {
         $indice = $i;
         break;
@@ -39,10 +36,7 @@ if ($indice === false) {
     array_push($_SESSION["venta"], $prodlistado);
 } else {
     $cantidadExistente = $_SESSION["venta"][$indice]->cantidad_prod;
-    if ($cantidadExistente > $prodlistado->cantidad_prod) {
-        header("Location: ../pedidos/pedidos.php?status=6");
-        exit;
-    }
+
     $_SESSION["venta"][$indice]->cantidad_prod++;
 }
 

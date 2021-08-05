@@ -1,11 +1,13 @@
 <?php
 	
-    session_start();
-    if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
-    $granTotal = 0;
+    
+    
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
+
+    if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
+    $granTotal = 0;
     
 
 ?>
@@ -20,7 +22,7 @@
 
 <script src="../../JS/select2.min.js"></script>
 <script src="../../JS/select.js"></script>
-<script src="../../JS/selectcliven.js"></script>
+<script src="../../JS/selectproveedor.js"></script>
 <script src="../../JS/selectprodventa.js"></script>
 
 
@@ -34,25 +36,17 @@
 			if(isset($_GET["status"])){
 				if($_GET["status"] === "2"){
 					?>
-                    <script type="text/javascript">alertify.error('Venta Cancelada!');</script>
+                    <script type="text/javascript">alertify.error('Pedido Cancelado!');</script>
 					<?php
 				}else if($_GET["status"] === "3"){
 					?>
                     <script type="text/javascript">alertify.error('Producto quitado de la lista');</script>
 					<?php
-				}else if($_GET["status"] === "4"){
-					?>
-                    <script type="text/javascript">alertify.warning('El producto que no cuenta con todas las unidades insertadas');</script>
-					<?php
 				}else if($_GET["status"] === "5"){
 					?>
                     <script type="text/javascript">alertify.error('El producto no existe');</script>
 					<?php
-                    }else if($_GET["status"] === "6"){
-                        ?>
-                        <script type="text/javascript">alertify.error('no hay mas unidades disponible');</script>
-                        <?php
-				}else{
+                    }else{
 					?>
                     <script type="text/javascript">alertify.error('Algo salió mal mientras se realizaba la venta');</script>
 					<?php
@@ -66,7 +60,7 @@
 <div class="container-fuid">
     <div class="row">
     <div class="col-9">
-    <form method="post" action="../inventario/gestor.php">
+    <form method="post" action="puente.php">
 			<label for="codigo">Código de producto: </label>
             
             <input class="form-control"type="hidden" name="unidad" value="1">
@@ -75,7 +69,7 @@
 		</form>
     </div>
     <div class="col-3">
-<form action="../inventario/gestor.php" method=GET>
+<form action="puente.php" method=GET>
         
         <div class="col-12">
             <h5>buscar producto</h5>
@@ -83,7 +77,7 @@
                 <option></option>
             </select>
             <h5>cantidad de unidades</h5>
-            <input class="form-control"type="num" name=cant value="1">
+            <input class="form-control"type="num" name=cant >
         </div>
         <div class="col-12">
             <input class="form-control btn btn-info"type="submit" value="agregar"name="agregar">
@@ -115,7 +109,7 @@
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><a class="btn btn-danger" href="<?php echo "../inventario/gestor.php?indice=" . $indice?>"></a></td>
+            <td><a class="btn btn-danger" href="<?php echo "puente.php?indice=" . $indice?>"></a></td>
 
                 </tr>
                 
@@ -138,7 +132,8 @@
             <div class="col-12" id="clienteventa">
                <h5> Seleccionar Proveedor</h5>
         <select name="proveedor"class="form-select "id="proveedor" aria-label="Default select">
-                        <option></option>
+                        <option>
+                        </option>
 
                     </select>
             </div>

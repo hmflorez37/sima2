@@ -39,7 +39,7 @@ if ($indice === false) {
     array_push($_SESSION["venta"], $prodlistado);
 } else {
     $cantidadExistente = $_SESSION["venta"][$indice]->cantidad_prod;
-    if ($cantidadExistente > $prodlistado->cantidad_prod) {
+    if ($cantidadExistente >= $prodlistado->cantidad_prod) {
         header("Location: ../ventas/ventas.php?status=6");
         exit;
     }

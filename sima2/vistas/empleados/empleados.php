@@ -66,6 +66,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <input type="password" name="password" class="form-control" placeholder="Ingrese clave" required> 
+                                        <div class="valid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <input type="text" name="cargo_empleado" class="form-control" placeholder="Ingrese Cargo" required>  
                                         <div class="valid-feedback">
                                         </div>
