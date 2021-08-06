@@ -1,8 +1,5 @@
 <?php
     session_start();
-    if(!isset($_SESSSION['id'])){
-        header("location:../../index.php");
-    }
     include("../../templates/menusup.php");
     include("../../templates/menulateral.php");
     include("../inventario/formularioproducto.php");
