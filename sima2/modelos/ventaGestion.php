@@ -7,6 +7,7 @@ class gestionVentas{
         require_once ("databasepdo.php");
         $pdo=new base();
         $pdo=$pdo->construct();
+        session_start();
     }
 
     public function prodventa($producto,$cant){
@@ -26,7 +27,7 @@ class gestionVentas{
     header("Location: ../ventas/ventas.php?status=4");
     exit;
     }   
-session_start();
+
 $indice = false;
 for ($i = 0; $i < count($_SESSION["venta"]); $i++) {
     if ($_SESSION["venta"][$i]->id_item === $producto) {
@@ -49,11 +50,9 @@ if ($indice === false) {
 header("Location: ../ventas/ventas.php");
 
     }
-
+    
 public function eliminarprodlistado($indice) {
-
-    session_start();
-array_splice($_SESSION["venta"], $indice, 1);
+array_splice($_SESSION["venta"], $indice,1 );
 header("location:../ventas/ventas.php?status=3");
 }
 }

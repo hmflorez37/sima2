@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php  
 $nombre = $_SESSION['nombre'];
 $tipo_session = $_SESSION['tipo_usuario'];
 ?><!DOCTYPE html>

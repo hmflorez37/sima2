@@ -7,6 +7,7 @@ class pedidoGestion{
         require_once ("databasepdo.php");
         $pdo=new base();
         $pdo=$pdo->construct();
+        session_start();
     }
 
     public function prodPedido($producto,$cant){
@@ -23,7 +24,6 @@ class pedidoGestion{
         exit;
     }
     
-session_start();
 $indice = false;
 for ($i = 0; $i < count($_SESSION["venta"]); $i++) {  
     if ($_SESSION["venta"][$i]->id_item === $producto) {
@@ -46,7 +46,7 @@ header("Location: ../pedidos/pedidos.php");
 
 public function eliminarprodlistado($indice) {
 
-    session_start();
+    
 array_splice($_SESSION["venta"], $indice, 1);
 header("location:../pedidos/pedidos.php?status=3");
 }

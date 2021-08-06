@@ -1,4 +1,5 @@
 <?php
+session_start();
     include("../../modelos/databasepdo.php");
     include("../../templates/menusup.php");
     include("../../templates/menulateral.php");

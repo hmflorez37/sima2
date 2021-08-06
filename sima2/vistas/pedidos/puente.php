@@ -7,8 +7,3 @@ $producto = (isset($_GET['prod'])) ? $_GET['prod'] : $_POST["codigo"];
 if($producto){
     $controlven->pedido($producto,$cant);
 }
-if(!isset($_GET["indice"])) return;
-$indice = $_GET["indice"];
-if ($indice){
-    $controlven->eliminarPedido($indice);
-}

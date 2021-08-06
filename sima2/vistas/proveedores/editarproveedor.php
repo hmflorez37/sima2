@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include ("../../templates/menulateral.php");
     include ("../../templates/menusup.php");
     $id=(isset($_POST['id']))?$_POST['id'] :"";

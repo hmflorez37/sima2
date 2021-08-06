@@ -1,7 +1,10 @@
 <?php
 	
     
-    
+    session_start();
+    if(!isset($_SESSSION['id'])){
+        header("location:../../index.php");
+    }
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
@@ -124,7 +127,7 @@
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><a class="btn btn-danger" href="<?php echo "puente.php?indice=" . $indice?>"></a></td>
+            <td><a class="btn btn-danger" href="<?php echo "eliminar_prod.php?indice=" . $indice?>"></a></td>
 
                 </tr>
                 

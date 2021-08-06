@@ -1,4 +1,7 @@
-<?php
+<?php session_start();
+if(!isset($_SESSION['id'])){
+	header("location:../../index.php");
+}
     include("../../templates/menusup.php");
     include("../../templates/menulateral.php");
 	include("../../modelos/databasepdo.php");

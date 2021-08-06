@@ -24,8 +24,9 @@ class sesion{
             if ($pas === $password){
                 session_start();
                 if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
-   
+                
                 $_SESSION['nombre']= $datos['nombre_empleado'];
+                $_SESSION['id']= $datos['id_empleado'];
                 $_SESSION['tipo_usuario']= $datos['cargo_empleado'];
                 header("Location: ../vistas/inicio/inicio.php");
             }

@@ -1,11 +1,15 @@
 <?php
 	
-    
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header("location:../../index.php");
+    }
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
     
     if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
+    $total = 0;
     $granTotal = 0;
 
 ?>
@@ -116,6 +120,7 @@
                     <th>NOMBRE</th>
                     <th>MARCA</th>
                     <th>CANTIDAD</th>
+                    <th>TOTAL</th>
                     <th>OPCION</th>
                     
                 </tr>
@@ -124,13 +129,16 @@
                 <tr>
                 <?php foreach($_SESSION['venta'] as $indice => $mostrar){ 
                     $granTotal += $mostrar->cantidad_prod;
+                    $total += $mostrar->costo_producto;
 					?>
 				<tr>
                 <td><?php echo $mostrar->id_item?></td>
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><a class="btn btn-danger" href="<?php echo "puente.php?indice=" . $indice?>"></a></td>
+            <td><?php echo $mostrar ->costo_producto?></td>
+
+            <td><a class="btn btn-danger" href="<?php echo "eliminar_prod.php?indice=" . $indice?>"></a></td>
 
                 </tr>
                 
@@ -159,8 +167,11 @@
             </div>
         </div>
 
-            <h3>Total: <?php echo $granTotal; ?></h3>
+            <h3>Totalprod: <?php echo $granTotal; ?></h3>
+            <h3>Total: <?php echo $total; ?></h3>
+
 			<input name="total" type="hidden" value="<?php echo $granTotal;?>">
+			<input name="total" type="hidden" value="<?php echo $total;?>">
 			<button type="submit" class="btn btn-warning">Terminar venta</button>
 			<a href="../../controlador/cancelarVenta.php" class="btn btn-danger">Cancelar venta</a>
 		</form>
