@@ -1,15 +1,10 @@
 <?php
-	
     session_start();
-    if(!isset($_SESSION['id'])){
-        header("location:../../index.php");
-    }
     include("../../modelos/databasepdo.php");
     include("../../templates/menulateral.php");
     include("../../templates/menusup.php");
     
     if(!isset($_SESSION["venta"])) $_SESSION["venta"] = [];
-    $total = 0;
     $granTotal = 0;
 
 ?>
@@ -33,7 +28,7 @@
 <body>
 <div class="container-fluid">
 
-
+<h1>S.G.A VENTA</h1>
 		<?php
 			if(isset($_GET["status"])){
 				if($_GET["status"] === "2"){
@@ -68,16 +63,8 @@
     
 <!--contenido-->
 <div class="container-fuid">
-<div class="col-12">
     <div class="row">
-    
-    <div class="col-6">
-    <div class="row">
-        <div class="col-2">
-            <h3 >S.G.A VENTA</h3>
-        </div>
-        <div class="col-10">
-            
+    <div class="col-9">
     <form method="post" action="puente.php">
 			<label for="codigo">Código de producto: </label>
             
@@ -85,31 +72,24 @@
 			<input autocomplete="off" autofocus class="form-control" name="codigo" required type="text" id="codigo" placeholder="Escribe el código">
             
 		</form>
-        </div>
     </div>
-    
-    </div>
-    <div class="col-6">
+    <div class="col-3">
 <form action="puente.php" method=GET>
-        <div class=row>
-        <div class="col-6">
+        
+        <div class="col-12">
             <h5>buscar producto</h5>
             <select name="prod"class="form-select " id="productov" aria-label="Default select">
                 <option></option>
             </select>
-        </div>
-        <div class="col-3">
-            <h5>cantidad</h5>
+            <h5>cantidad de unidades</h5>
             <input class="form-control"type="num" name=cant value="1">
         </div>
-        <div class="col-3">
+        <div class="col-12">
             <input class="form-control btn btn-info"type="submit" value="agregar"name="agregar">
-        </div>
         </div>
 <!--fin agregar productos-->
     </form>
         </div> 
-    </div>
     </div>
     <div class="row">
         <div class="col-9">
@@ -120,7 +100,6 @@
                     <th>NOMBRE</th>
                     <th>MARCA</th>
                     <th>CANTIDAD</th>
-                    <th>TOTAL</th>
                     <th>OPCION</th>
                     
                 </tr>
@@ -129,15 +108,12 @@
                 <tr>
                 <?php foreach($_SESSION['venta'] as $indice => $mostrar){ 
                     $granTotal += $mostrar->cantidad_prod;
-                    $total += $mostrar->costo_producto;
 					?>
 				<tr>
                 <td><?php echo $mostrar->id_item?></td>
             <td><?php echo $mostrar ->nombre_prod?></td>
             <td><?php echo $mostrar ->id_marcas?></td>
             <td><?php echo $mostrar ->cantidad_prod?></td>
-            <td><?php echo $mostrar ->costo_producto?></td>
-
             <td><a class="btn btn-danger" href="<?php echo "eliminar_prod.php?indice=" . $indice?>"></a></td>
 
                 </tr>
@@ -159,7 +135,7 @@
         <div class="col-12">
             
             <div class="col-12" id="clienteventa">
-                <h5> seleccionar cliente</h5>
+               <h5> seleccionar cliente</h5>
         <select name="clientev"class="form-select "id="clientev" aria-label="Default select">
                         <option></option>
 
@@ -167,11 +143,8 @@
             </div>
         </div>
 
-            <h3>Totalprod: <?php echo $granTotal; ?></h3>
-            <h3>Total: <?php echo $total; ?></h3>
-
+            <h3>Total: <?php echo $granTotal; ?></h3>
 			<input name="total" type="hidden" value="<?php echo $granTotal;?>">
-			<input name="total" type="hidden" value="<?php echo $total;?>">
 			<button type="submit" class="btn btn-warning">Terminar venta</button>
 			<a href="../../controlador/cancelarVenta.php" class="btn btn-danger">Cancelar venta</a>
 		</form>
