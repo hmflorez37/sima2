@@ -33,8 +33,9 @@
 
     <div class="row" id="ventas">
     <?php
-$sentencia = $pdo->query("SELECT ventas.total, ventas.fecha, ventas.id,ventas.cliente, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', productos_vendidos.cantidad SEPARATOR '__') AS producto FROM ventas INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN producto ON producto.id_item = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id");
+$sentencia = $pdo->query("SELECT ventas.total, ventas.fecha, ventas.id,cliente.nombre as cliente, GROUP_CONCAT( producto.id_item, '..', producto.nombre_prod, '..', productos_vendidos.cantidad SEPARATOR '__') AS producto FROM ventas INNER JOIN cliente ON cliente.id_cliente = ventas.cliente INNER JOIN productos_vendidos ON productos_vendidos.id_venta = ventas.id INNER JOIN producto ON producto.id_item = productos_vendidos.id_producto GROUP BY ventas.id ORDER BY ventas.id");
 $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 <?php if($tipo_session == "administrador"){?>
 	<div class="col-xs-12">
@@ -49,7 +50,9 @@ $ventas = $sentencia->fetchAll(PDO::FETCH_OBJ);
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($ventas as $venta){ ?>
+				<?php 
+				print_r($ventas);
+				foreach($ventas as $venta){ ?>
 				<tr>
 					<td><?php echo $venta->cliente ?></td>
 					<td><?php echo $venta->fecha ?></td>
